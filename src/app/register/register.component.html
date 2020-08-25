@@ -1,49 +1,54 @@
-<!-- <h1>User Registration</h1>
-<form (ngSubmit)='register()' [formGroup]="regForm" *ngIf="this.regForm">
-    <div class='container'>
-        <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="firstnames">First names </label>
-            <div class="col-md-3">
-                <input class="form-control" name="firstnames" placeholder="firstnames" type="text" formControlName='firstnames'
-                [ngClass]="{'is-invalid': message.firstnames }"> <span class="invalid-feedback">{{ message.firstnames}}</span>
+<div class="card border-success mb-3 bg-dark col-md-6 offset-md-3 mt-5" style="padding: 0;">
+    <div class="card-header bg-success text-white" style="text-align: center;"><h2>User Registration</h2></div>
+    <div class="card-body text-white" >
+        <form (ngSubmit)='register()' [formGroup]="regForm" >
+            <div class='container' style="padding-left: 0px; scroll-padding-right: 0px; padding-top: 8px;">
+                <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label" for="firstnames">First names </label>
+                    <div class="col-md-8">
+                        <input class="form-control" name="firstnames" placeholder="firstnames" type="text" formControlName='firstnames'
+                        [ngClass]="{'is-invalid': message.firstnames }"> <span class="invalid-feedback">{{ message.firstnames}}</span>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label" for="surname">Surname </label>
+                    <div class="col-md-8">
+                        <input class="form-control" placeholder="surname" name="surname" type="text" formControlName='surname'
+                        [ngClass]="{'is-invalid': message.surname }"> <span class="invalid-feedback">{{ message.surname}}</span>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label" for="username">Username </label>
+                    <div class="col-md-8">
+                        <input class="form-control" placeholder="username" name="username" type="text" formControlName='username'
+                        [ngClass]="{'is-invalid': message.username }"> <span class="invalid-feedback">{{ message.username}}</span>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label" for="email">E-mail </label>
+                    <div class="col-md-8">
+                        <input class="form-control" placeholder="email@example.x" name="email" type="email" formControlName='email'
+                        [ngClass]="{'is-invalid': message.email }"> <span class="invalid-feedback">{{ message.email}}</span>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label" for="password">Password </label>
+                    <div class="col-md-8">
+                        <input class="form-control" placeholder="password" name="password" type="password" formControlName='password'
+                        [ngClass]="{'is-invalid': message.password }"> <span class="invalid-feedback">{{ message.password}}</span>
+                    </div>
+                </div>
+                <div class="form-group row mb-2">
+                    <label class="col-md-4 col-form-label" for="cpassword">Confirm Password </label>
+                    <div class="col-md-8">
+                        <input class="form-control" placeholder="password (again)" name="cpassword" type="password" formControlName='cpassword'
+                        [ngClass]="{'is-invalid': message.cpassword }"> <span class="invalid-feedback">{{ message.cpassword}}</span>
+                    </div>
+                </div>
+                <p class="err">{{ errorMessage }} </p>
+                <button  [disabled]="!regForm.valid" class="btn btn-success btn-md" type="submit" style="margin-left: 40%; width: 20%">Register</button>
             </div>
-        </div>
-        <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="surname">Surname </label>
-            <div class="col-md-3">
-                <input class="form-control" placeholder="surname" name="surname" type="text" formControlName='surname'
-                [ngClass]="{'is-invalid': message.surname }"> <span class="invalid-feedback">{{ message.surname}}</span>
-            </div>
-        </div>
-        <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="username">Username </label>
-            <div class="col-md-3">
-                <input class="form-control" placeholder="username" name="username" type="text" formControlName='username'
-                [ngClass]="{'is-invalid': message.username }"> <span class="invalid-feedback">{{ message.username}}</span>
-            </div>
-        </div>
-        <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="email">E-mail </label>
-            <div class="col-md-3">
-                <input class="form-control" placeholder="email@example.x" name="email" type="email" formControlName='email'
-                [ngClass]="{'is-invalid': message.email }"> <span class="invalid-feedback">{{ message.email}}</span>
-            </div>
-        </div>
-        <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="password">Password </label>
-            <div class="col-md-3">
-                <input class="form-control" placeholder="password" name="password" type="password" formControlName='password'
-                [ngClass]="{'is-invalid': message.password }"> <span class="invalid-feedback">{{ message.password}}</span>
-            </div>
-        </div>
-        <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label" for="cpassword">Confirm Password </label>
-            <div class="col-md-3">
-                <input class="form-control" placeholder="password (again)" name="cpassword" type="password" formControlName='cpassword'
-                [ngClass]="{'is-invalid': message.cpassword }"> <span class="invalid-feedback">{{ message.cpassword}}</span>
-            </div>
-        </div>
-        <p class="err">{{ errorMessage }} </p>
-        <button  [disabled]="!regForm.valid" class="btn btn-outline-secondary btn-md" type="submit">Register</button>
+        </form>
     </div>
-</form> -->
+    
+</div>
