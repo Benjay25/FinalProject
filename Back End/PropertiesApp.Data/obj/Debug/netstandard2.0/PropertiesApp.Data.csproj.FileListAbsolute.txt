@@ -1,0 +1,5 @@
+D:\Benjay\Work\Bitcube\Projects\Final Project Back End\PropertiesApp.Data\bin\Debug\netstandard2.0\PropertiesApp.Data.deps.json
+D:\Benjay\Work\Bitcube\Projects\Final Project Back End\PropertiesApp.Data\bin\Debug\netstandard2.0\PropertiesApp.Data.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.csprojAssemblyReference.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.AssemblyInfoInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.AssemblyInfo.cs
