@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj": {}
+    "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj": {}
   },
   "projects": {
-    "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj": {
+    "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj",
+        "projectUniqueName": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj",
         "projectName": "PropertiesApp.Domain",
-        "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj",
+        "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj",
         "packagesPath": "C:\\Users\\Benjamin\\.nuget\\packages\\",
-        "outputPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\PropertiesApp.Domain\\obj\\",
+        "outputPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

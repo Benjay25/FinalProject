@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\Properties WebAPI\\Properties WebAPI.csproj": {}
+    "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\Properties WebAPI\\Properties WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\Properties WebAPI\\Properties WebAPI.csproj": {
+    "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\Properties WebAPI\\Properties WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\Properties WebAPI\\Properties WebAPI.csproj",
+        "projectUniqueName": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\Properties WebAPI\\Properties WebAPI.csproj",
         "projectName": "Properties WebAPI",
-        "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\Properties WebAPI\\Properties WebAPI.csproj",
+        "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\Properties WebAPI\\Properties WebAPI.csproj",
         "packagesPath": "C:\\Users\\Benjamin\\.nuget\\packages\\",
-        "outputPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project Back End\\Properties WebAPI\\obj\\",
+        "outputPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\Properties WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

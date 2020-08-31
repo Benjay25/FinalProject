@@ -1,0 +1,14 @@
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.1\ConsoleApp.deps.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.1\ConsoleApp.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.1\ConsoleApp.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.1\ConsoleApp.csprojAssemblyReference.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.1\ConsoleApp.AssemblyInfoInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.1\ConsoleApp.AssemblyInfo.cs
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.1\ConsoleApp.csproj.CoreCompileInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.1\ConsoleApp.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.1\ConsoleApp.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.1\PropertiesApp.Data.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.1\PropertiesApp.Domain.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.1\PropertiesApp.Data.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.1\PropertiesApp.Domain.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.1\ConsoleApp.csproj.CopyComplete

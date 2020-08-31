@@ -1,0 +1,9 @@
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.0\ConsoleApp.deps.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.0\ConsoleApp.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.0\ConsoleApp.AssemblyInfoInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.0\ConsoleApp.AssemblyInfo.cs
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netstandard2.0\ConsoleApp.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.0\ConsoleApp.csprojAssemblyReference.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.0\ConsoleApp.csproj.CoreCompileInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.0\ConsoleApp.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netstandard2.0\ConsoleApp.pdb

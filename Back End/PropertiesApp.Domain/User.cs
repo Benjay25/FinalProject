@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 
 namespace PropertiesApp.Domain
 {
@@ -8,6 +9,7 @@ namespace PropertiesApp.Domain
         public User()
         {
         }
+        public int Id { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string email { get; set; }

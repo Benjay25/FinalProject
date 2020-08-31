@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Properties WebAPI", "Properties WebAPI\Properties WebAPI.csproj", "{1C662DEE-F365-4B0A-869E-53AC9E0044D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Properties.WebAPI", "Properties WebAPI\Properties.WebAPI.csproj", "{1C662DEE-F365-4B0A-869E-53AC9E0044D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertiesApp.Data", "PropertiesApp.Data\PropertiesApp.Data.csproj", "{9588EDC7-E2FC-4AF8-8E55-9CCE93924109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertiesApp.Data", "PropertiesApp.Data\PropertiesApp.Data.csproj", "{9588EDC7-E2FC-4AF8-8E55-9CCE93924109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertiesApp.Domain", "PropertiesApp.Domain\PropertiesApp.Domain.csproj", "{46D0B3CC-C0A7-4777-B432-0F94481F850F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertiesApp.Domain", "PropertiesApp.Domain\PropertiesApp.Domain.csproj", "{46D0B3CC-C0A7-4777-B432-0F94481F850F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

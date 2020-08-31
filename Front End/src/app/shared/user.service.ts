@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 
 export class UserService {
-    dataUrl: string = "api/usersArr"
+    dataUrl: string = "http://localhost:5000/users"
     constructor(private httpClient: HttpClient, private router: Router) {} 
 
     public getUsers(): Observable<User[]> {
@@ -34,7 +34,6 @@ export class UserService {
     
     createUser(User: User): Observable<User> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        User.id = null;
         return this.httpClient.post<User>(this.dataUrl, User, { headers });
       }
 }

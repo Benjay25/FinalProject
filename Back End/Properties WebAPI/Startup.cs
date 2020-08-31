@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PropertiesApp.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Properties_WebAPI
 {
@@ -24,7 +26,13 @@ namespace Properties_WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
+
+            services.AddDbContext<UserContext>(opt => 
+            opt.UseSqlServer(Configuration.GetConnectionString("UserConnex"))
+                .EnableSensitiveDataLogging()
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +44,8 @@ namespace Properties_WebAPI
             }
 
             app.UseRouting();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

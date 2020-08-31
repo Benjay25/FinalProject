@@ -1,0 +1,20 @@
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\bin\Debug\netcoreapp3.1\Properties WebAPI.exe
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\bin\Debug\netcoreapp3.1\Properties WebAPI.deps.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\bin\Debug\netcoreapp3.1\Properties WebAPI.runtimeconfig.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\bin\Debug\netcoreapp3.1\Properties WebAPI.runtimeconfig.dev.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\bin\Debug\netcoreapp3.1\Properties WebAPI.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\bin\Debug\netcoreapp3.1\Properties WebAPI.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties WebAPI.csprojAssemblyReference.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties WebAPI.AssemblyInfoInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties WebAPI.AssemblyInfo.cs
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties WebAPI.csproj.CoreCompileInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties WebAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties WebAPI.RazorTargetAssemblyInfo.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\staticwebassets\Properties WebAPI.StaticWebAssets.Manifest.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\staticwebassets\Properties WebAPI.StaticWebAssets.xml
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties WebAPI.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties WebAPI.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties WebAPI.genruntimeconfig.cache

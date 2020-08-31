@@ -1,0 +1,17 @@
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netcoreapp3.0\ConsoleApp.deps.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netcoreapp3.0\ConsoleApp.runtimeconfig.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netcoreapp3.0\ConsoleApp.runtimeconfig.dev.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netcoreapp3.0\ConsoleApp.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netcoreapp3.0\ConsoleApp.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netcoreapp3.0\PropertiesApp.Data.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netcoreapp3.0\PropertiesApp.Domain.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netcoreapp3.0\PropertiesApp.Data.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\bin\Debug\netcoreapp3.0\PropertiesApp.Domain.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netcoreapp3.0\ConsoleApp.csprojAssemblyReference.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netcoreapp3.0\ConsoleApp.AssemblyInfoInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netcoreapp3.0\ConsoleApp.AssemblyInfo.cs
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netcoreapp3.0\ConsoleApp.csproj.CoreCompileInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netcoreapp3.0\ConsoleApp.csproj.CopyComplete
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netcoreapp3.0\ConsoleApp.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netcoreapp3.0\ConsoleApp.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\ConsoleApp\obj\Debug\netcoreapp3.0\ConsoleApp.genruntimeconfig.cache

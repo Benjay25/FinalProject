@@ -28,16 +28,11 @@ export class RegisterComponent implements OnInit {
     this.regUser = {
       "firstnames": this.regForm.get('firstnames').value.trim(),
       "surname": this.regForm.get('surname').value.trim(),
-      "username": this.regForm.get('username').value.trim(),
       "email": this.regForm.get('email').value.trim(),
       "password": this.regForm.get('password').value.trim()
     }
     if (!this.emailUnique()) {
       this.errorMessage = "This email is already in use";
-      return;
-    }
-    if (!this.usernameUnique()) {
-      this.errorMessage = "This username is already taken";
       return;
     }
     if (!this.passwordConfirmed()) {
@@ -54,13 +49,13 @@ export class RegisterComponent implements OnInit {
 }
 
   ngOnInit(): void {
-    let controls: string[] = ["firstnames", "surname", "username", "email","password", "cpassword"];
+    let controls: string[] = ["firstnames", "surname", "email","password", "cpassword"];
     this.subs = [];
     this.userService.getUsers().subscribe({
       next: users => {
         this.userList = users;
       },error: err => console.log(err)
-    }); 
+    });
     this.regForm = this.fb.group({
       firstnames: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       surname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
@@ -88,7 +83,6 @@ export class RegisterComponent implements OnInit {
 
   //functions for validating information
   passwordConfirmed(): boolean {
-    console.log(this.regUser.password +" + "+ this.regForm.get('cpassword').value)
     if (this.regUser.password !== this.regForm.get('cpassword').value) {
       return true;
     } else 
@@ -105,15 +99,6 @@ export class RegisterComponent implements OnInit {
     return true; 
   }
 
-  usernameUnique(): boolean {
-    for (let i = 0; i < this.userList.length; i++) {
-      const user = this.userList[i];
-       if (user.username === this.regUser.username) {
-        return false;
-      }
-    }
-    return true; 
-  }
 
   ngOnDestroy() {
     for (let i = 0; i < this.subs.length; i++) {

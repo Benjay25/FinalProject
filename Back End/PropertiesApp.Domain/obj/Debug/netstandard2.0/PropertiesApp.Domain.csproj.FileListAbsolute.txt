@@ -1,0 +1,9 @@
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\bin\Debug\netstandard2.0\PropertiesApp.Domain.deps.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\bin\Debug\netstandard2.0\PropertiesApp.Domain.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\bin\Debug\netstandard2.0\PropertiesApp.Domain.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\PropertiesApp.Domain.AssemblyInfoInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\PropertiesApp.Domain.AssemblyInfo.cs
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\PropertiesApp.Domain.csproj.CoreCompileInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\PropertiesApp.Domain.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\PropertiesApp.Domain.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\PropertiesApp.Domain.csprojAssemblyReference.cache
