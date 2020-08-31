@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
-import { User } from '../shared/user';
-import { UserService } from '../shared/user.service';
+import { User } from '../_models/user';
+import { UserService } from '../_services/user.service';
+import { AuthenticationService } from '../_services/authentication.service';
 import { ValidationMessages } from '../shared/validation.messages';
 import { Subscription } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -22,25 +24,31 @@ export class RegisterComponent implements OnInit {
   validationMessages: ValidationMessages = new ValidationMessages;
   message: { [key: string]: string} = {};
 
-  constructor(private router: Router, private userService: UserService, private fb: FormBuilder) { }
+  constructor(private router: Router, private userService: UserService, private fb: FormBuilder, private authenticationService: AuthenticationService) { }
 
   register(): void { //registers the user, validates info and then saves user if valid
     this.regUser = {
-      "firstnames": this.regForm.get('firstnames').value.trim(),
-      "surname": this.regForm.get('surname').value.trim(),
+      "firstname": this.regForm.get('firstnames').value.trim(),
+      "lastname": this.regForm.get('surname').value.trim(),
       "email": this.regForm.get('email').value.trim(),
       "password": this.regForm.get('password').value.trim()
-    }
-    if (!this.emailUnique()) {
-      this.errorMessage = "This email is already in use";
-      return;
     }
     if (!this.passwordConfirmed()) {
       this.userService.createUser(this.regUser).subscribe({ //create new user using service
         next: () => {
-        console.log("account created successfully.");
         console.log(this.regUser);
-        this.router.navigate(["/login"]);
+        this.authenticationService.login(this.regUser.email, this.regUser.password)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigate(["/myAdverts"]);
+                },
+                err => {
+                    this.errorMessage = err;
+                });
+        },
+        error: err => {
+        this.errorMessage = err;
         }
       });
     } else {
@@ -51,7 +59,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     let controls: string[] = ["firstnames", "surname", "email","password", "cpassword"];
     this.subs = [];
-    this.userService.getUsers().subscribe({
+    this.userService.getAll().subscribe({
       next: users => {
         this.userList = users;
       },error: err => console.log(err)
@@ -88,17 +96,6 @@ export class RegisterComponent implements OnInit {
     } else 
     return false;
   }
-
-  emailUnique(): boolean {
-    for (let i = 0; i < this.userList.length; i++) {
-      const user = this.userList[i];
-      if (user.email === this.regUser.email) {
-        return false;
-      } 
-    }
-    return true; 
-  }
-
 
   ngOnDestroy() {
     for (let i = 0; i < this.subs.length; i++) {

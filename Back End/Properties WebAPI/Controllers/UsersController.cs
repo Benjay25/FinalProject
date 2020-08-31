@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PropertiesApp.Data;
 using PropertiesApp.Domain;
 using WebApi.Models;
-using WebApi.Services;
 
 namespace Properties_WebAPI.Controllers
 {
@@ -18,7 +18,6 @@ namespace Properties_WebAPI.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UserContext _context;
-        private IUserService _userService;
 
         public UsersController(UserContext context)
         {
@@ -77,24 +76,35 @@ namespace Properties_WebAPI.Controllers
 
             return NoContent();
         }
-
+        [EnableCors]
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
-            var response = _userService.Authenticate(model);
-
+            var user = _context.Users.SingleOrDefault(x => x.email == model.Username && x.password == model.Password);         
+            if (user == null) 
+                return BadRequest(new { message = "Username or password is incorrect" });
+            
+            var response = new AuthenticateResponse(user, user.email);
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
+            // authentication successful so generate jwt token
+            //var token = generateJwtToken(user);
+                        
             return Ok(response);
         }
 
-        // POST: api/Users
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        //POST: api/Users
+        //To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            var reguser = _context.Users.SingleOrDefault(x => x.email == user.email);
+
+            if (reguser != null)
+                return BadRequest(new { message = "This email address already exists" });
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 

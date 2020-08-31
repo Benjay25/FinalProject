@@ -1,9 +1,8 @@
-﻿export class User {
-    id: number;
-    email?: string;
-    username: string;
+﻿export interface User{
+    id?:number;
+    firstname: string;
+    lastname: string;
+    email: string;
     password: string;
-    firstnames: string;
-    surname: string;
     token?: string;
 }
