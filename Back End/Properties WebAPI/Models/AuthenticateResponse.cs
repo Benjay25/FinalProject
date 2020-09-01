@@ -14,9 +14,9 @@ namespace WebApi.Models
         public AuthenticateResponse(User user, string token)
         {
             Id = user.Id;
-            FirstName = user.firstname;
-            LastName = user.lastname;
-            Email = user.email;
+            FirstName = user.Firstname;
+            LastName = user.Lastname;
+            Email = user.Email;
             Token = token;
         }
     }

@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using PropertiesApp.Data;
 using PropertiesApp.Domain;
+using WebApi.Helpers;
 using WebApi.Models;
 
 namespace Properties_WebAPI.Controllers
@@ -18,10 +25,12 @@ namespace Properties_WebAPI.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UserContext _context;
+        private readonly AppSettings _appSettings;
 
-        public UsersController(UserContext context)
+        public UsersController(UserContext context, IOptions<AppSettings> appSettings)
         {
             _context = context;
+            _appSettings = appSettings.Value;
         }
 
         // GET: api/Users
@@ -80,17 +89,14 @@ namespace Properties_WebAPI.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
-            var user = _context.Users.SingleOrDefault(x => x.email == model.Username && x.password == model.Password);         
+            var user = _context.Users.SingleOrDefault(x => x.Email == model.Email && x.Password == model.Password);         
             if (user == null) 
                 return BadRequest(new { message = "Username or password is incorrect" });
             
-            var response = new AuthenticateResponse(user, user.email);
-            if (response == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+            //authentication successful so generate jwt token
+            var token = generateJwtToken(user);
+            var response = new AuthenticateResponse(user, token);
 
-            // authentication successful so generate jwt token
-            //var token = generateJwtToken(user);
-                        
             return Ok(response);
         }
 
@@ -100,7 +106,7 @@ namespace Properties_WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            var reguser = _context.Users.SingleOrDefault(x => x.email == user.email);
+            var reguser = _context.Users.SingleOrDefault(x => x.Email == user.Email);
 
             if (reguser != null)
                 return BadRequest(new { message = "This email address already exists" });
@@ -130,6 +136,21 @@ namespace Properties_WebAPI.Controllers
         private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);
+        }
+
+        private string generateJwtToken(User user)
+        {
+            // generate token that is valid for 7 days
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("This is a strong string");
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }

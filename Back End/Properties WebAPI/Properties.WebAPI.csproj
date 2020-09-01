@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PropertiesApp.Data\PropertiesApp.Data.csproj" />
-    <ProjectReference Include="..\PropertiesApp.Domain\PropertiesApp.Domain.csproj" />
+    <ProjectReference Include="..\PropertiesApp.Domain\Entities.csproj" />
   </ItemGroup>
 
 

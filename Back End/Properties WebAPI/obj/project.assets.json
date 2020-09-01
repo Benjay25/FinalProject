@@ -2575,28 +2575,28 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entities.dll": {}
+        }
+      },
       "PropertiesApp.Data/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.7",
-          "PropertiesApp.Domain": "1.0.0"
+          "Entities": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.7"
         },
         "compile": {
           "bin/placeholder/PropertiesApp.Data.dll": {}
         },
         "runtime": {
           "bin/placeholder/PropertiesApp.Data.dll": {}
-        }
-      },
-      "PropertiesApp.Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/PropertiesApp.Domain.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/PropertiesApp.Domain.dll": {}
         }
       }
     }
@@ -8399,24 +8399,24 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Entities/1.0.0": {
+      "type": "project",
+      "path": "../PropertiesApp.Domain/Entities.csproj",
+      "msbuildProject": "../PropertiesApp.Domain/Entities.csproj"
+    },
     "PropertiesApp.Data/1.0.0": {
       "type": "project",
       "path": "../PropertiesApp.Data/PropertiesApp.Data.csproj",
       "msbuildProject": "../PropertiesApp.Data/PropertiesApp.Data.csproj"
-    },
-    "PropertiesApp.Domain/1.0.0": {
-      "type": "project",
-      "path": "../PropertiesApp.Domain/PropertiesApp.Domain.csproj",
-      "msbuildProject": "../PropertiesApp.Domain/PropertiesApp.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Entities >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.7",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.7",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
-      "PropertiesApp.Data >= 1.0.0",
-      "PropertiesApp.Domain >= 1.0.0"
+      "PropertiesApp.Data >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8452,8 +8452,8 @@
             "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Data\\PropertiesApp.Data.csproj": {
               "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Data\\PropertiesApp.Data.csproj"
             },
-            "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj": {
-              "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj"
+            "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Entities.csproj": {
+              "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Entities.csproj"
             }
           }
         }

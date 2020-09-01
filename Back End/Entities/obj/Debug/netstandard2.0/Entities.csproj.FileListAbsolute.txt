@@ -1,0 +1,8 @@
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Entities\bin\Debug\netstandard2.0\Entities.deps.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Entities\bin\Debug\netstandard2.0\Entities.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Entities\bin\Debug\netstandard2.0\Entities.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Entities\obj\Debug\netstandard2.0\Entities.AssemblyInfoInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Entities\obj\Debug\netstandard2.0\Entities.AssemblyInfo.cs
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Entities\obj\Debug\netstandard2.0\Entities.csproj.CoreCompileInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Entities\obj\Debug\netstandard2.0\Entities.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Entities\obj\Debug\netstandard2.0\Entities.pdb

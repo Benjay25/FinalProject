@@ -24,11 +24,11 @@
     ".NETCoreApp,Version=v3.1": {
       "Properties.WebAPI/1.0.0": {
         "dependencies": {
+          "Entities": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.7",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.7",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
           "PropertiesApp.Data": "1.0.0",
-          "PropertiesApp.Domain": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -2200,24 +2200,24 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "PropertiesApp.Data/1.0.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.7",
-          "PropertiesApp.Domain": "1.0.0"
-        },
+      "Entities/1.0.0": {
         "runtime": {
-          "PropertiesApp.Data.dll": {}
+          "Entities.dll": {}
         },
         "compile": {
-          "PropertiesApp.Data.dll": {}
+          "Entities.dll": {}
         }
       },
-      "PropertiesApp.Domain/1.0.0": {
+      "PropertiesApp.Data/1.0.0": {
+        "dependencies": {
+          "Entities": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.7"
+        },
         "runtime": {
-          "PropertiesApp.Domain.dll": {}
+          "PropertiesApp.Data.dll": {}
         },
         "compile": {
-          "PropertiesApp.Domain.dll": {}
+          "PropertiesApp.Data.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -4955,12 +4955,12 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "PropertiesApp.Data/1.0.0": {
+    "Entities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "PropertiesApp.Domain/1.0.0": {
+    "PropertiesApp.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

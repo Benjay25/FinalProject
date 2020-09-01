@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7JT7m6doYCZJdHNR7MnvXoQISnQX+k9Udqrf6i27Vl/4V+c460ALb9mFX4XWtZ/9OoedE1oDth4kEl+h3Hyx+g==",
+  "dgSpecHash": "Rl0uIab1NwqWpuDZ2O6qR9UN16XXr3fPV2+rKAutPz2ytsmYykOQqR6WErcYfJtwaajCS+8Qv9EI5Nv/chf7Cw==",
   "success": true,
-  "projectFilePath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\PropertiesApp.Domain.csproj",
+  "projectFilePath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
