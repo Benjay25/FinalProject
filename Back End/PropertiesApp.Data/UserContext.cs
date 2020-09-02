@@ -14,6 +14,7 @@ namespace PropertiesApp.Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Advert> Adverts { get; set; }
 
     }
 }

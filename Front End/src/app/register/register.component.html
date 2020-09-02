@@ -1,6 +1,6 @@
 <div class="card border-success mb-3 bg-dark col-md-6 offset-md-3 mt-5" style="padding: 0;">
     <div class="card-header bg-success text-white" style="text-align: center;"><h2>User Registration</h2></div>
-    <div class="card-body text-white" >
+    <div class="card-body text-white">
         <form (ngSubmit)='register()' [formGroup]="regForm" >
             <div class='container' style="padding-left: 0px; scroll-padding-right: 0px; padding-top: 8px;">
                 <div class="form-group row mb-2">
@@ -41,6 +41,8 @@
                 <p class="err">{{ errorMessage }} </p>
                 <button  [disabled]="!regForm.valid" class="btn btn-success btn-md" type="submit" style="margin-left: 40%; width: 20%">Register</button>
             </div>
+            <div style="text-align: center;"><a routerLink="/login">Already have an account? Log in here!</a></div>
+            <div *ngIf="success" class="alert alert-success mt-3 mb-0">{{success}}</div>
         </form>
     </div>
     

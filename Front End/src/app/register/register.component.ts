@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   errorMessage: string = '';
   validationMessages: ValidationMessages = new ValidationMessages;
   message: { [key: string]: string} = {};
+  success: string = "";
 
   constructor(private router: Router, private userService: UserService, private fb: FormBuilder, private authenticationService: AuthenticationService) { }
 
@@ -41,7 +42,8 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate(["/myAdverts"]);
+                  this.success = "Account Created Successfully"
+                  this.router.navigate(["/myAdverts"]);
                 },
                 err => {
                     this.errorMessage = err;
