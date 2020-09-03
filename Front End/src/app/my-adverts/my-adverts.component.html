@@ -1,20 +1,31 @@
-<div >
+<div class="col-md-10" style="margin-inline: auto;">
     <div class="container p-3 text-white" style="margin-block: 0px;">
-        <div class="container"></div>
-        <div class="card text-white border-success mb-3" style="background-color: #292d30;" *ngFor="let advert of arrAdverts">
-            <div class="card-header border-success" >{{ advert.title }}</div>
-            <div class="row" >
-                <div class="col-sm-6" style="margin-left: 2%;">
-                    <div><span class="cityprov">City:</span> {{ advert.city }}</div>
-                    <div><span class="cityprov">Province:</span> {{ advert.province }}</div>
+        <div class="container">
+            <div class="card text-white border-success mb-3" style="background-color: #292d30;" *ngFor="let advert of arrAdverts">
+                <div class="card-header border-success" >{{ advert.title }} <span class="text-secondary" *ngIf="advert.hidden == true">  (Hidden)</span></div>
+                <div class="row" >
+                    <div class="col-sm-6" style="margin-left: 2%;">
+                        <div><span class="cityprov">City:</span> {{ advert.city }}</div>
+                        <div><span class="cityprov">Province:</span> {{ advert.province }}</div>
+                    </div>
+                    <div class="col-sm-3" style="text-align: center; "><h2>R{{ advert.price }}</h2></div>
+                    <div class="col-sm-2">
+                        <div class="dropdown" style="margin-top: 3%;">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" [routerLink]="['/myAdverts', advert.id, 'edit']">Edit</a>
+                            <a class="dropdown-item" (click)="hideAdvert(advert.id)">Hide</a>
+                            <a class="dropdown-item" (click)="deleteAdvert(advert.id)">Delete</a> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-3" style="text-align: center; "><h2>R{{ advert.price }}</h2></div>
-                <div class="col-sm-3"><h2></h2></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-9" style="margin-left: 2%; "><div><span class="cityprov">Details:</span></div> <span>{{ advert.details }} </span></div>
+                <div class="row">
+                    <div class="col-sm-9" style="margin-left: 2%; "><div><span class="cityprov">Details:</span></div> <span>{{ advert.details }} </span></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-

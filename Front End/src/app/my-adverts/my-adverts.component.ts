@@ -23,14 +23,23 @@ export class MyAdvertsComponent implements OnInit {
       province: "Wisconsin",
       city: "Kenosha",
       details: "I mean......it's a property.....what more do you wanna know?",
+      hidden: false,
       price: 25000
     };
     this.arrAdverts[0] = ad;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 3; i++) {
       this.arrAdverts[i] = ad;
     }
   }
+
+  deleteAdvert(id: number): void {
+
+  }
   
+  hideAdvert(id: number): void {
+
+  }
+
   populateArray(): void {
     this.advertService.getAdverts().subscribe({
       next: advert => {

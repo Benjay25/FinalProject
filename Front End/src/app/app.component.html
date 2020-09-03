@@ -5,7 +5,7 @@
       <li><a class='navbar-brand'> {{pageTitle}}</a></li>
       <li><a class="nav-item nav-link" routerLink="/">Home</a></li>
       <li><a class="nav-item nav-link" routerLink="/">Homes for sale</a></li>
-      <li><a class="nav-item nav-link" routerLink="/">List a property</a></li>
+      <li><a class="nav-item nav-link" routerLink="/myAdverts/new">List a property</a></li>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li *ngIf="!currentUser"><a class="nav-item nav-link" routerLink="/login" >Login</a></li>
@@ -19,7 +19,7 @@
   <nav *ngIf="currentUser" class="navbar navbar-expand navbar-dark" style="background-color: #398129;" > 
     <ul class="navbar-nav ml-auto mr-auto">
       <li><a class="nav-item nav-link text-white" routerLink="/">Buy A House</a></li>
-      <li><a class="nav-item nav-link text-white" routerLink="/">Sell A House</a></li>
+      <li><a class="nav-item nav-link text-white" routerLink="/myAdverts/new">Sell A House</a></li>
       <li><a class="nav-item nav-link text-white" routerLink="/myAdverts">My Adverts</a></li>
       <li><a class="nav-item nav-link text-white" routerLink="/">My Profile</a></li>
       <li><a class="nav-item nav-link text-white" routerLink="/">Manage Account</a></li>

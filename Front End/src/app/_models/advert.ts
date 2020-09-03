@@ -6,5 +6,6 @@ export interface Advert{
     city: string,
     details: string,
     price: number,
+    hidden: boolean,
     date?: string
 }

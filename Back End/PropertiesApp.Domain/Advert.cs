@@ -16,5 +16,6 @@ namespace Entities
         public string City { get; set; }
         public string Details { get; set; }
         public string Price { get; set; }
+        public string Hidden { get; set; }
     }
 }
