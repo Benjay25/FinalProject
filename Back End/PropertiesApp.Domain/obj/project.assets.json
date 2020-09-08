@@ -185,9 +185,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Entities.csproj",
-      "projectName": "Entities",
-      "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Entities.csproj",
+      "projectUniqueName": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Properties.ViewModels.csproj",
+      "projectName": "Properties.ViewModels",
+      "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Properties.ViewModels.csproj",
       "packagesPath": "C:\\Users\\Benjamin\\.nuget\\packages\\",
       "outputPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\obj\\",
       "projectStyle": "PackageReference",

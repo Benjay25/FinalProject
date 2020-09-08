@@ -1692,14 +1692,14 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Entities/1.0.0": {
+      "Properties.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "compile": {
-          "bin/placeholder/Entities.dll": {}
+          "bin/placeholder/Properties.ViewModels.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Entities.dll": {}
+          "bin/placeholder/Properties.ViewModels.dll": {}
         }
       }
     }
@@ -6128,17 +6128,17 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Entities/1.0.0": {
+    "Properties.ViewModels/1.0.0": {
       "type": "project",
-      "path": "../PropertiesApp.Domain/Entities.csproj",
-      "msbuildProject": "../PropertiesApp.Domain/Entities.csproj"
+      "path": "../PropertiesApp.Domain/Properties.ViewModels.csproj",
+      "msbuildProject": "../PropertiesApp.Domain/Properties.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Entities >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.7",
-      "NETStandard.Library >= 2.0.3"
+      "NETStandard.Library >= 2.0.3",
+      "Properties.ViewModels >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6171,8 +6171,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Entities.csproj": {
-              "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Entities.csproj"
+            "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Properties.ViewModels.csproj": {
+              "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Properties.ViewModels.csproj"
             }
           }
         }

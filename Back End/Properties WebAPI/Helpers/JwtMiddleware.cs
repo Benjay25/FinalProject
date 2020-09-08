@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Properties_WebAPI.Controllers;
+using Properties.WebAPI.Controllers;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;

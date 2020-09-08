@@ -2575,22 +2575,22 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Entities/1.0.0": {
+      "Properties.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "compile": {
-          "bin/placeholder/Entities.dll": {}
+          "bin/placeholder/Properties.ViewModels.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Entities.dll": {}
+          "bin/placeholder/Properties.ViewModels.dll": {}
         }
       },
       "PropertiesApp.Data/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Entities": "1.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.7"
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.7",
+          "Properties.ViewModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/PropertiesApp.Data.dll": {}
@@ -8399,10 +8399,10 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Entities/1.0.0": {
+    "Properties.ViewModels/1.0.0": {
       "type": "project",
-      "path": "../PropertiesApp.Domain/Entities.csproj",
-      "msbuildProject": "../PropertiesApp.Domain/Entities.csproj"
+      "path": "../PropertiesApp.Domain/Properties.ViewModels.csproj",
+      "msbuildProject": "../PropertiesApp.Domain/Properties.ViewModels.csproj"
     },
     "PropertiesApp.Data/1.0.0": {
       "type": "project",
@@ -8412,10 +8412,10 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Entities >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.7",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.7",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
+      "Properties.ViewModels >= 1.0.0",
       "PropertiesApp.Data >= 1.0.0"
     ]
   },
@@ -8452,8 +8452,8 @@
             "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Data\\PropertiesApp.Data.csproj": {
               "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Data\\PropertiesApp.Data.csproj"
             },
-            "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Entities.csproj": {
-              "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Entities.csproj"
+            "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Properties.ViewModels.csproj": {
+              "projectPath": "D:\\Benjay\\Work\\Bitcube\\Projects\\Final Project\\Back End\\PropertiesApp.Domain\\Properties.ViewModels.csproj"
             }
           }
         }

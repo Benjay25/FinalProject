@@ -7,7 +7,7 @@ using PropertiesApp.Data;
 
 namespace PropertiesApp.Data.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(PropertiesContext))]
     partial class UserContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

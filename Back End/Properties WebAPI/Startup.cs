@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PropertiesApp.Data;
 using Microsoft.EntityFrameworkCore;
+using WebApi.Services;
+using WebApi.Helpers;
 
 namespace Properties_WebAPI
 {
@@ -29,10 +31,13 @@ namespace Properties_WebAPI
             services.AddCors();
             services.AddControllers();
 
-            services.AddDbContext<UserContext>(opt => 
+            services.AddDbContext<PropertiesContext>(opt => 
             opt.UseSqlServer(Configuration.GetConnectionString("UserConnex"))
                 .EnableSensitiveDataLogging()
             );
+
+            services.AddScoped<IPropertiesRepository, PropertiesRepository>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,12 +47,15 @@ namespace Properties_WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
+
+            //app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

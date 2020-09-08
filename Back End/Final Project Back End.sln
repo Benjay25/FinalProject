@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Properties.WebAPI", "Proper
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertiesApp.Data", "PropertiesApp.Data\PropertiesApp.Data.csproj", "{9588EDC7-E2FC-4AF8-8E55-9CCE93924109}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "PropertiesApp.Domain\Entities.csproj", "{46D0B3CC-C0A7-4777-B432-0F94481F850F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Properties.ViewModels", "PropertiesApp.Domain\Properties.ViewModels.csproj", "{46D0B3CC-C0A7-4777-B432-0F94481F850F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

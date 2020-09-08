@@ -1,0 +1,8 @@
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\bin\Debug\netstandard2.0\Properties.ViewModels.deps.json
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\bin\Debug\netstandard2.0\Properties.ViewModels.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\bin\Debug\netstandard2.0\Properties.ViewModels.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\Properties.ViewModels.AssemblyInfoInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\Properties.ViewModels.AssemblyInfo.cs
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\Properties.ViewModels.csproj.CoreCompileInputs.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\Properties.ViewModels.dll
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\Properties.ViewModels.pdb

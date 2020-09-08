@@ -1,13 +1,13 @@
-using System.ComponentModel.DataAnnotations;
+using System;
 
-namespace WebApi.Models
+namespace Properties.ViewModels
 {
     public class AuthenticateRequest
     {
-        [Required]
+        //[Required]
         public string Email { get; set; }
 
-        [Required]
+        //[Required]
         public string Password { get; set; }
     }
 }

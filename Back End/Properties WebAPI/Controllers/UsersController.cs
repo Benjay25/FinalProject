@@ -12,22 +12,23 @@ using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Properties.ViewModels;
 using PropertiesApp.Data;
-using PropertiesApp.Domain;
 using WebApi.Helpers;
-using WebApi.Models;
+using WebApi.Services;
 
-namespace Properties_WebAPI.Controllers
+namespace Properties.WebAPI.Controllers
 {
     
     [Route("[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UserContext _context;
+        private readonly PropertiesContext _context;
         private readonly AppSettings _appSettings;
+        private IUserService _userService;
 
-        public UsersController(UserContext context, IOptions<AppSettings> appSettings)
+        public UsersController(PropertiesContext context, IOptions<AppSettings> appSettings, IUserService userService)
         {
             _context = context;
             _appSettings = appSettings.Value;
@@ -35,9 +36,10 @@ namespace Properties_WebAPI.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public IActionResult GetAll()
         {
-            return await _context.Users.ToListAsync();
+            var users = _userService.GetAll();
+            return Ok(users);
         }
 
         // GET: api/Users/5
@@ -95,7 +97,8 @@ namespace Properties_WebAPI.Controllers
             
             //authentication successful so generate jwt token
             var token = generateJwtToken(user);
-            var response = new AuthenticateResponse(user, token);
+            UserModel _user = new UserModel();
+            var response = new AuthenticateResponse(_user, token);
 
             return Ok(response);
         }

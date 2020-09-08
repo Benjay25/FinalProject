@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 export class UserService {
     constructor(private httpClient: HttpClient, private router: Router) { }
-    dataUrl: string = "http://localhost:5000/users";
+    dataUrl: string = `${environment.apiUrl}/users`;
 
     createUser(User: User): Observable<User> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

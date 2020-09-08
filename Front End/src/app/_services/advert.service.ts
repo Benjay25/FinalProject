@@ -3,13 +3,14 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http
 import { Observable, throwError } from "rxjs";
 import { map } from "rxjs/operators";
 import { Advert } from '@app/_models/advert';
+import { environment } from '@environments/environment';
 
 @Injectable ({
     providedIn: 'root'
 })
 
 export class AdvertService {
-    dataUrl: string = ""
+    dataUrl: string = `${environment.apiUrl}/adverts`;
     constructor(private httpClient: HttpClient) {} 
 
     public getAdverts(): Observable<Advert[]> {
