@@ -14,7 +14,7 @@ export class MyAdvertsComponent implements OnInit {
   constructor(private advertService: AdvertService) { }
 
   ngOnInit(): void {
-    this.temp_populateArray();
+    this.populateArray();
   }
   temp_populateArray(): void {
     var ad: Advert = {

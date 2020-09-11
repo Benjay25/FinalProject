@@ -8,7 +8,7 @@ import { User } from '@app/_models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    dataUrl: string = "http://localhost:5000/users"
+    dataUrl: string = `${environment.apiUrl}/users`;
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 

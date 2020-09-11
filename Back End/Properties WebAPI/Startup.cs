@@ -13,6 +13,7 @@ using PropertiesApp.Data;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Services;
 using WebApi.Helpers;
+using Properties_WebAPI.Services;
 
 namespace Properties_WebAPI
 {
@@ -38,6 +39,8 @@ namespace Properties_WebAPI
 
             services.AddScoped<IPropertiesRepository, PropertiesRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAdvertService, AdvertService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

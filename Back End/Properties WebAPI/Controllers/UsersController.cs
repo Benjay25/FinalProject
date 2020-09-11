@@ -32,9 +32,34 @@ namespace Properties.WebAPI.Controllers
         {
             _context = context;
             _appSettings = appSettings.Value;
+            _userService = userService;
+        }
+        //POST: authenticate
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate(AuthenticateRequest model)
+        {
+            var user = _userService.Authenticate(model);
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+            return Ok(user);
         }
 
-        // GET: api/Users
+        //POST: Users
+        [HttpPost]
+        public IActionResult PostUser(User user)
+        {
+            var userTemp = _userService.Find(user);
+            var reguser = _context.Users.SingleOrDefault(x => x.Email == user.Email);
+
+            if (reguser != null)
+                return BadRequest(new { message = "This email address already exists" });
+
+           _userService.Add(user);
+
+            return Ok(CreatedAtAction("GetUser", new { id = user.Id }, user));
+        }
+
+        // GET: Users
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -86,38 +111,6 @@ namespace Properties.WebAPI.Controllers
             }
 
             return NoContent();
-        }
-        [EnableCors]
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate(AuthenticateRequest model)
-        {
-            var user = _context.Users.SingleOrDefault(x => x.Email == model.Email && x.Password == model.Password);         
-            if (user == null) 
-                return BadRequest(new { message = "Username or password is incorrect" });
-            
-            //authentication successful so generate jwt token
-            var token = generateJwtToken(user);
-            UserModel _user = new UserModel();
-            var response = new AuthenticateResponse(_user, token);
-
-            return Ok(response);
-        }
-
-        //POST: api/Users
-        //To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
-        {
-            var reguser = _context.Users.SingleOrDefault(x => x.Email == user.Email);
-
-            if (reguser != null)
-                return BadRequest(new { message = "This email address already exists" });
-
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
         // DELETE: api/Users/5

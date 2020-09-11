@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Properties.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace PropertiesApp.Data
     {
         User GetUser(int id);
         List<User> GetUsers();
+        User GetUserByEmail(User user);
         User CreateUser(User user);
         User UpdateUser(User user);
         void DeleteUser(int id);
@@ -17,7 +19,7 @@ namespace PropertiesApp.Data
         //----Adverts----
         Advert createAdvert(Advert ad);
         List<Advert> GetAdverts();
-        Advert getAdvert(int id);
+        Advert GetAdvert(int id);
         Advert UpdateAdvert(Advert ad);
         void DeleteAdvert(int id);
     }
@@ -31,7 +33,6 @@ namespace PropertiesApp.Data
         //----------------------------- U S E R S -----------------------------------
         public User CreateUser(User user)
         {
-            //throw new NotImplementedException();
             _ctx.Users.Add(user);
             _ctx.SaveChanges();
             return user;
@@ -44,13 +45,16 @@ namespace PropertiesApp.Data
 
         public User GetUser(int id)
         {
-            //throw new NotImplementedException();
             return _ctx.Users.Find(id);
         }
-
+        public User GetUserByEmail(User user)
+        {
+            var userTemp = _ctx.Users.FirstOrDefault(x => x.Email == user.Email);
+            if (userTemp == null) return null;
+            return userTemp;
+        }
         public List<User> GetUsers()
         {
-            //throw new NotImplementedException();
             return _ctx.Users.ToList();
         }
 
@@ -62,7 +66,6 @@ namespace PropertiesApp.Data
         //----------------------------- A D V E R T S -----------------------------------
         public Advert createAdvert(Advert ad)
         {
-            //throw new NotImplementedException();
             _ctx.Adverts.Add(ad); 
             _ctx.SaveChanges();
             return ad;
@@ -70,12 +73,12 @@ namespace PropertiesApp.Data
 
         public List<Advert> GetAdverts()
         {
-            throw new NotImplementedException();
+            return _ctx.Adverts.ToList();
         }
 
-        public Advert getAdvert(int id)
+        public Advert GetAdvert(int id)
         {
-            throw new NotImplementedException();
+            return _ctx.Adverts.Find(id);
         }
 
         public Advert UpdateAdvert(Advert ad)

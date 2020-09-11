@@ -17,6 +17,8 @@ namespace WebApi.Services
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<UserModel> GetAll();
         UserModel GetById(int id);
+        UserModel Find(User user);
+        void Add(User user);
     }
 
     public class UserService : IUserService
@@ -32,16 +34,7 @@ namespace WebApi.Services
             _appSettings = appSettings.Value;
         }
 
-        private UserModel Map(User user)
-        {
-            return new UserModel
-            {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email
-            };
-        }
+        
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
@@ -56,7 +49,16 @@ namespace WebApi.Services
 
             return new AuthenticateResponse(userModel, token);
         }
-
+        //------------------------C R U D-------------------------
+        public void Add(User user)
+        {
+            _repo.CreateUser(user);
+        }
+        public UserModel Find(User user)
+        {
+            var userTemp = _repo.GetUserByEmail(user);
+            return Map(userTemp);
+        }
         public IEnumerable<UserModel> GetAll()
         {
             var userList = _repo.GetUsers();
@@ -72,7 +74,16 @@ namespace WebApi.Services
         }
 
         // helper methods
-
+        private UserModel Map(User user)
+        {
+            return new UserModel
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+        }
         private string generateJwtToken(UserModel user)
         {
             // generate token that is valid for 7 days
@@ -87,6 +98,5 @@ namespace WebApi.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-
     }
 }
