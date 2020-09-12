@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PropertiesApp.Data;
 
 namespace PropertiesApp.Data.Migrations
 {
     [DbContext(typeof(PropertiesContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20200912114036_advertsUpdated")]
+    partial class advertsUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,13 +33,13 @@ namespace PropertiesApp.Data.Migrations
                     b.Property<string>("Details")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Hidden")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Province")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")

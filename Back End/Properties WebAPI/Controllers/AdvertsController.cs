@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Entities;
 using PropertiesApp.Data;
 using Properties_WebAPI.Services;
 
@@ -17,12 +16,20 @@ namespace Properties_WebAPI.Controllers
     {
         private IAdvertService _advertService;
 
-        private readonly PropertiesContext _context;
 
-        public AdvertsController(PropertiesContext context, IAdvertService adServ)
+        public AdvertsController(IAdvertService adServ)
         {
-            _context = context;
             _advertService = adServ;
+        }
+
+        //---------------------------------------------------------------------------------
+        // POST: Adverts
+        //[Authorize]
+        [HttpPost]
+        public IActionResult PostAdvert(Advert advert)
+        {
+            _advertService.Add(advert);
+            return CreatedAtAction("GetAdvert", new { id = advert.Id }, advert);
         }
 
         // GET: Adverts
@@ -35,84 +42,54 @@ namespace Properties_WebAPI.Controllers
         }
 
         // GET: Adverts/5
-        [Authorize]
+        //[Authorize]
         [HttpGet("{id}")]
-        public async Task<ActionResult<Advert>> GetAdvert(int id)
+        public IActionResult GetAdvert(int id)
         {
-            var advert = await _context.Adverts.FindAsync(id);
+            var advert = _advertService.GetById(id);
 
             if (advert == null)
             {
                 return NotFound();
             }
 
-            return advert;
+            return Ok(advert);
         }
 
+        [HttpGet("locations")]
+        public Dictionary<string, List<string>> GetLocations()
+        {
+            var locations = _advertService.GetLocations();
+            return locations;
+        }
         // PUT: Adverts/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [Authorize]
+        //[Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAdvert(int id, Advert advert)
+        public IActionResult PutAdvert(Advert advert)
         {
-            if (id != advert.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(advert).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AdvertExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: Adverts
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Advert>> PostAdvert(Advert advert)
-        {
-            _context.Adverts.Add(advert);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAdvert", new { id = advert.Id }, advert);
+            _advertService.UpdateAdvert(advert);
+            return Ok();
         }
 
         // DELETE: Adverts/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Advert>> DeleteAdvert(int id)
-        {
-            var advert = await _context.Adverts.FindAsync(id);
-            if (advert == null)
-            {
-                return NotFound();
-            }
+        //public async Task<ActionResult<Advert>> DeleteAdvert(int id)
+        //{
+        //    var advert = await _context.Adverts.FindAsync(id);
+        //    if (advert == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Adverts.Remove(advert);
-            await _context.SaveChangesAsync();
+        //    _context.Adverts.Remove(advert);
+        //    await _context.SaveChangesAsync();
 
-            return advert;
-        }
+        //    return advert;
+        //}
 
         private bool AdvertExists(int id)
         {
-            return _context.Adverts.Any(e => e.Id == id);
+            return _advertService.GetById(id) == null; 
         }
     }
 }

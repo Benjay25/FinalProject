@@ -21,13 +21,18 @@ export class AdvertService {
         var display: Advert[] = [];
         for (let i = 0; i < arrAdverts.length; i++) {
           const element = arrAdverts[i];
-          if (element.hidden == false) {
+          if (element.status == "LIVE") {
             display.push(element);
           }
         }
         return display;
     }
     
+    getLocation(): Observable<any> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.httpClient.get<any>(`${this.dataUrl}/locations`, {headers});
+    } 
+
     getAdvert(id: number): Observable<Advert> {
         const url = `${this.dataUrl}/${id}`;
             return this.httpClient.get<Advert>(url);
@@ -37,17 +42,12 @@ export class AdvertService {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const url = `${this.dataUrl}/${advert.id}`;
         return this.httpClient.put<Advert>(url, advert, { headers })
-          .pipe(
-            // Return the product on an update
-            map(() => advert)
-          );
       }
 
       createAdvert(advert: Advert): Observable<Advert> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        advert.id = null;
         return this.httpClient.post<Advert>(this.dataUrl, advert, { headers })
-    }
+      }
 
       deleteProduct(id: number): Observable<{}> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

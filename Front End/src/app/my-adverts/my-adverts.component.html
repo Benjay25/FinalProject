@@ -1,8 +1,9 @@
 <div class="col-md-10" style="margin-inline: auto;">
     <div class="container p-3 text-white" style="margin-block: 0px;">
         <div class="container">
+            <h1 style="text-align: center;">My Adverts</h1>
             <div class="card text-white border-success mb-3" style="background-color: #292d30;" *ngFor="let advert of arrAdverts">
-                <div class="card-header border-success" >{{ advert.title }} <span class="text-secondary" *ngIf="advert.hidden == true">  (Hidden)</span></div>
+                <div class="card-header border-success" >{{ advert.title }} <span class="text-secondary" *ngIf="advert.status == 'HIDDEN'">  (Hidden)</span></div>
                 <div class="row" >
                     <div class="col-sm-6" style="margin-left: 2%;">
                         <div><span class="cityprov">City:</span> {{ advert.city }}</div>
@@ -16,8 +17,9 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" [routerLink]="['/myAdverts', advert.id, 'edit']">Edit</a>
-                            <a class="dropdown-item" (click)="hideAdvert(advert.id)">Hide</a>
-                            <a class="dropdown-item" (click)="deleteAdvert(advert.id)">Delete</a> 
+                            <a class="dropdown-item" *ngIf="advert.status == 'LIVE'" (click)="hideAdvert(advert)">Hide</a>
+                            <a class="dropdown-item" *ngIf="advert.status == 'HIDDEN'" (click)="hideAdvert(advert)">Make Public</a>
+                            <a class="dropdown-item" (click)="deleteAdvert(advert)">Delete</a> 
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Advert } from '@app/_models/advert';
 import { AdvertService } from '@app/_services/advert.service';
 
@@ -11,33 +12,31 @@ export class MyAdvertsComponent implements OnInit {
   arrAdverts: Advert[] = [];
   errorMessage: any;
 
-  constructor(private advertService: AdvertService) { }
+  constructor(private advertService: AdvertService, private router: Router) { }
 
   ngOnInit(): void {
     this.populateArray();
   }
-  temp_populateArray(): void {
-    var ad: Advert = {
-      email: "ben@ben",
-      title: "2 Bedroom 1 Gaming Room",
-      province: "Wisconsin",
-      city: "Kenosha",
-      details: "I mean......it's a property.....what more do you wanna know?",
-      hidden: false,
-      price: 25000
-    };
-    this.arrAdverts[0] = ad;
-    for (let i = 0; i < 3; i++) {
-      this.arrAdverts[i] = ad;
-    }
-  }
 
   deleteAdvert(id: number): void {
-
+    //to be implemented
   }
   
-  hideAdvert(id: number): void {
-
+  hideAdvert(ad: Advert): void {
+    if (ad.status == "LIVE") {
+      ad.status = "HIDDEN";
+      this.advertService.updateAdvert(ad).subscribe({
+        next: () => this.router.navigate(['/userAd']),
+        error: err => this.errorMessage = err
+      });
+    }
+    else if (ad.status == "HIDDEN") {
+      ad.status = "LIVE";
+      this.advertService.updateAdvert(ad).subscribe({
+        next: () => this.router.navigate(['/userAd']),
+        error: err => this.errorMessage = err
+      });
+    }
   }
 
   populateArray(): void {

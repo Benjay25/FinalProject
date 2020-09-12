@@ -1,5 +1,4 @@
-﻿using Entities;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using Properties.ViewModels;
 using PropertiesApp.Data;
 using System;
@@ -14,6 +13,9 @@ namespace Properties_WebAPI.Services
     {
         IEnumerable<AdvertModel> GetAll();
         AdvertModel GetById(int id);
+        void Add(Advert ad);
+        void UpdateAdvert(Advert ad);
+        Dictionary<string, List<string>> GetLocations();
     }
     public class AdvertService : IAdvertService
     {
@@ -25,6 +27,13 @@ namespace Properties_WebAPI.Services
             this._repo = repo;
             _appSettings = appSettings.Value;
         }
+
+        //------------------------C R U D-------------------------
+        public void Add(Advert ad)
+        {
+            _repo.CreateAdvert(ad);
+        }
+        
         public IEnumerable<AdvertModel> GetAll()
         {
             var adList = _repo.GetAdverts();
@@ -38,20 +47,41 @@ namespace Properties_WebAPI.Services
 
             return Map(advertEntity);
         }
-
+      
+        // Helper methods
+        public AdvertModel Find(int id)
+        {
+            var advertTemp = _repo.GetAdvert(id);
+            return Map(advertTemp);
+        }
         private AdvertModel Map(Advert ad)
         {
             return new AdvertModel
             {
                 Id = ad.Id,
-                Email = ad.Email,
                 Title = ad.Title,
                 Province = ad.Province,
                 City = ad.City,
                 Details = ad.Details,
                 Price = ad.Price,
-                Hidden = ad.Hidden
+                Status = ad.Status
             };
+        }
+
+        public void UpdateAdvert(Advert ad)
+        {
+            _repo.UpdateAdvert(ad);
+        }
+
+        public Dictionary<string, List<string>> GetLocations()
+        {
+            Dictionary<string, List<string>> ProvinceList = new Dictionary<string, List<string>>();
+            ProvinceList.Add("Northern Cape", new List<string>() { "Kimberley", "Upington" });
+            ProvinceList.Add("Eastern Cape", new List<string>() { "Kimberley", "Upington" });
+            ProvinceList.Add("Western Cape", new List<string>() { "Kimberley", "Upington" });
+            ProvinceList.Add("Free State", new List<string>() { "Kimberley", "Upington" });
+            ProvinceList.Add("Gauteng", new List<string>() { "Kimberley", "Upington" });
+            return ProvinceList;
         }
     }
 }

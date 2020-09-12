@@ -3,8 +3,8 @@
         <div class="card-header border-success text-success" style="margin-top: 0%;">
             <h1 style="text-align: center;">{{ title }}</h1>
         </div>
-        <div class="card-body border-success" style="padding-block: 10px;">
-            <form (ngSubmit)='listAd()' [formGroup]="newAdForm" *ngIf="this.newAdForm">
+        <form (ngSubmit)='listAd()' [formGroup]="newAdForm" *ngIf="this.newAdForm">
+            <div class="card-body border-success" style="padding-block: 10px;">
                 <div class='container' style="margin-top: 2%; padding: 0%;">
                     <div class="form-group row mb-2 justify-content-center">
                         <label class="col-sm-3 col-form-label" for="title">Advert Title </label>
@@ -13,40 +13,45 @@
                         </div>
                     </div>
                     <div class="form-group row mb-2 justify-content-center">
-                        <label class="col-sm-3 col-form-label" for="title">City </label>
-                        <div class="col-md-7">
-                            <input class="form-control left" name="city" placeholder="City (required)" type="text" formControlName='city'>
+                        <label class="col-sm-3 col-form-label" for="province">Province </label>
+                        <div class="col-sm-7" style="margin-left: -11%;">
+                            <select class="form-control" formControlName = 'province' (change)="updateCities()">
+                                <option *ngFor="let province of provincesArr" value="{{ province }}"> {{ province }}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row mb-2 justify-content-center">
-                        <label class="col-sm-3 col-form-label" for="province">Province </label>
-                        <div class="col-md-7">
-                            <input class="form-control left" name="province" placeholder="Province (required)" type="text" formControlName='province'>
+                        <label class="col-sm-3 col-form-label" for="title">City </label>
+                        <div class="col-sm-7" style="margin-left: -11%;">
+                            <select class="form-control" formControlName = 'city'>
+                                <option value="{{ city }}" *ngFor='let city of citiesArr'> {{ city }} </option>
+                            </select>
                         </div>
                     </div>
                     <div  class="form-group row mb-2 justify-content-center">
                         <label class="col-sm-3 col-form-label" for="details">Ad Details </label>
                         <div class="col-md-7">
-                        <textarea  class="form-control left" formControlName="details" placeholder="Provide an advert description (required)"  rows="5"></textarea>
+                        <textarea  class="form-control left" name="details" formControlName="details" placeholder="Provide an advert description (required)"  rows="5"></textarea>
                         </div>
                     </div>
                     <div  class="form-group row mb-2 justify-content-center">
                         <label class="col-sm-7 col-form-label" for="price">Ad Price </label>
                         <label class="col-form-label col-sm-1 text-success left" for="price" style="font-size: 35px; font-weight: bold; margin-top: -15px; text-align: right;" >R</label>
                         <div class="col-md-3">
-                            <input class="form-control left" name="price" placeholder="0.00" type="text" formControlName='price'>
+                            <input class="form-control left" name="price" placeholder="0.00" type="number" formControlName='price'>
                         </div>
                     </div>
                     
                 </div>
-            </form>
-        </div> 
-        <div class="card-footer border-success" style="padding-top: 2%; padding-bottom: 2%; margin-left: 0px;">
-            <div class="form-group row  justify-content-center">
-                <button  class="btn btn-secondary btn-md" style="width: 100px;" (click)="back()"> Back </button>
-                <span style="padding: 5px;"> </span>
-                <button  [disabled]="!newAdForm.valid" class="btn btn-secondary btn-md" type="submit">List Advert</button>
             </div>
-        </div>
+            <div class="card-footer border-success" style="padding-top: 2%; padding-bottom: 2%; margin-left: 0px;">
+                <div class="form-group row  justify-content-center">
+                    <button  class="btn btn-secondary btn-md" style="width: 100px;" (click)="back()"> Cancel </button>
+                    <span style="padding: 5px;"> </span>
+                    <button  [disabled]="!newAdForm.valid" class="btn btn-secondary btn-md" type="submit">Publish Advert</button>
+                </div>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3 mb-0">{{errorMessage}}</div>
+        </form>
     </div>
 </div>

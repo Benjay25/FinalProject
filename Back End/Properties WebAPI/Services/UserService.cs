@@ -31,7 +31,7 @@ namespace WebApi.Services
         public UserService(IOptions<AppSettings> appSettings, IPropertiesRepository repo)
         {
             this._repo = repo;
-            _appSettings = appSettings.Value;
+            this._appSettings = appSettings.Value;
         }
 
         
@@ -54,11 +54,6 @@ namespace WebApi.Services
         {
             _repo.CreateUser(user);
         }
-        public UserModel Find(User user)
-        {
-            var userTemp = _repo.GetUserByEmail(user);
-            return Map(userTemp);
-        }
         public IEnumerable<UserModel> GetAll()
         {
             var userList = _repo.GetUsers();
@@ -74,6 +69,11 @@ namespace WebApi.Services
         }
 
         // helper methods
+        public UserModel Find(User user)
+        {
+            var userTemp = _repo.GetUserByEmail(user);
+            return Map(userTemp);
+        }
         private UserModel Map(User user)
         {
             return new UserModel
@@ -88,7 +88,7 @@ namespace WebApi.Services
         {
             // generate token that is valid for 7 days
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes("This is a strong string"); //Temporary fix as appSettings.Secret is giving problems
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),

@@ -1,4 +1,4 @@
-﻿using Entities;
+﻿using Microsoft.EntityFrameworkCore;
 using Properties.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,10 +17,10 @@ namespace PropertiesApp.Data
         void DeleteUser(int id);
 
         //----Adverts----
-        Advert createAdvert(Advert ad);
+        Advert CreateAdvert(Advert ad);
         List<Advert> GetAdverts();
         Advert GetAdvert(int id);
-        Advert UpdateAdvert(Advert ad);
+        void UpdateAdvert(Advert ad);
         void DeleteAdvert(int id);
     }
     public class PropertiesRepository : IPropertiesRepository
@@ -64,7 +64,7 @@ namespace PropertiesApp.Data
         }
 
         //----------------------------- A D V E R T S -----------------------------------
-        public Advert createAdvert(Advert ad)
+        public Advert CreateAdvert(Advert ad)
         {
             _ctx.Adverts.Add(ad); 
             _ctx.SaveChanges();
@@ -81,9 +81,15 @@ namespace PropertiesApp.Data
             return _ctx.Adverts.Find(id);
         }
 
-        public Advert UpdateAdvert(Advert ad)
+        public void UpdateAdvert(Advert ad)
         {
-            throw new NotImplementedException();
+            var existing = _ctx.Adverts.SingleOrDefault(em => em.Id == ad.Id);
+            if (existing != null) { 
+                _ctx.Entry(existing).State = EntityState.Detached;
+                _ctx.Adverts.Attach(ad);
+                _ctx.Entry(ad).State = EntityState.Modified;
+                _ctx.SaveChanges();
+            }
         }
 
         public void DeleteAdvert(int id)
