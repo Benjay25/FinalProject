@@ -6,3 +6,4 @@ D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\Properties.ViewModels.csproj.CoreCompileInputs.cache
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\Properties.ViewModels.dll
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\Properties.ViewModels.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Domain\obj\Debug\netstandard2.0\Properties.ViewModels.csprojAssemblyReference.cache

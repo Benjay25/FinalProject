@@ -16,6 +16,7 @@ namespace Properties_WebAPI.Services
         void Add(Advert ad);
         void UpdateAdvert(Advert ad);
         Dictionary<string, List<string>> GetLocations();
+        IEnumerable<AdvertModel> GetAdvertsByUserId(int id);
     }
     public class AdvertService : IAdvertService
     {
@@ -37,6 +38,12 @@ namespace Properties_WebAPI.Services
         public IEnumerable<AdvertModel> GetAll()
         {
             var adList = _repo.GetAdverts();
+            return adList.Select(u => Map(u));
+        }
+
+        public IEnumerable<AdvertModel> GetAdvertsByUserId(int id)
+        {
+            var adList = _repo.GetCurrentUserAdverts(id);
             return adList.Select(u => Map(u));
         }
 

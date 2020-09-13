@@ -8,9 +8,11 @@ import { AuthLoginGuard } from './_helpers/auth.login.guard';
 import { RegisterComponent } from './register/register.component';
 import { MyAdvertsComponent } from './my-adverts/my-adverts.component';
 import { NewAdvertComponent } from './new.advert/new.advert.component';
+import { AdvertDetailsComponent } from './advert-details/advert-details.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent},
+    { path: 'homepage', component: HomeComponent},
+    { path: 'homepage/:id/details', component: AdvertDetailsComponent},
     { path: 'login', canActivate: [AuthLoginGuard], component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'myAdverts', canActivate: [AuthGuard], component: MyAdvertsComponent },
@@ -18,7 +20,7 @@ const routes: Routes = [
     { path: 'myAdverts/new', canActivate: [AuthGuard], component: NewAdvertComponent },
     
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'homepage' },
 ];
 
 @NgModule({

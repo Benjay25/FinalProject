@@ -40,7 +40,7 @@ export class MyAdvertsComponent implements OnInit {
   }
 
   populateArray(): void {
-    this.advertService.getAdverts().subscribe({
+    this.advertService.getCurrentUserAdverts().subscribe({
       next: advert => {
         this.arrAdverts = advert;
       },error: err => this.errorMessage = err

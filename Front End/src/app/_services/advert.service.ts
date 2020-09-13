@@ -30,12 +30,16 @@ export class AdvertService {
     
     getLocation(): Observable<any> {
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-      return this.httpClient.get<any>(`${this.dataUrl}/locations`, {headers});
+      return this.httpClient.get<any>(`${this.dataUrl}/locations`,{headers}); 
     } 
 
     getAdvert(id: number): Observable<Advert> {
         const url = `${this.dataUrl}/${id}`;
             return this.httpClient.get<Advert>(url);
+    }
+
+    getCurrentUserAdverts(): Observable<Advert[]> {
+      return this.httpClient.get<Advert[]>(`${this.dataUrl}/myadverts/${JSON.parse(localStorage.getItem('currentUser')).id}`);
     }
 
     updateAdvert(advert: Advert): Observable<Advert> {

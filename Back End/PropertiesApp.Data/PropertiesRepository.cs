@@ -22,6 +22,7 @@ namespace PropertiesApp.Data
         Advert GetAdvert(int id);
         void UpdateAdvert(Advert ad);
         void DeleteAdvert(int id);
+        List<Advert> GetCurrentUserAdverts(int id);
     }
     public class PropertiesRepository : IPropertiesRepository
     {
@@ -74,6 +75,11 @@ namespace PropertiesApp.Data
         public List<Advert> GetAdverts()
         {
             return _ctx.Adverts.ToList();
+        }
+
+        public List<Advert> GetCurrentUserAdverts(int id)
+        {
+            return _ctx.Adverts.Where(a => a.UserId == id).ToList();
         }
 
         public Advert GetAdvert(int id)

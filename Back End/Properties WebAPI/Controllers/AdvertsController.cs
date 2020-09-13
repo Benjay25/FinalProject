@@ -33,7 +33,6 @@ namespace Properties_WebAPI.Controllers
         }
 
         // GET: Adverts
-        //[Authorize]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -55,7 +54,20 @@ namespace Properties_WebAPI.Controllers
 
             return Ok(advert);
         }
+        //[Authorize]
+        [HttpGet("myadverts/{id}")]
+        public IActionResult GetCurrentUserAdvert(int id)
+        {
+            var advert = _advertService.GetAdvertsByUserId(id);
 
+            if (advert == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(advert);
+        }
+        //[Authorize]
         [HttpGet("locations")]
         public Dictionary<string, List<string>> GetLocations()
         {
@@ -72,6 +84,7 @@ namespace Properties_WebAPI.Controllers
         }
 
         // DELETE: Adverts/5
+        //[Authorize]
         [HttpDelete("{id}")]
         //public async Task<ActionResult<Advert>> DeleteAdvert(int id)
         //{

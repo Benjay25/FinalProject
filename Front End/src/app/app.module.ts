@@ -11,7 +11,8 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register/register.component';
 import { MyAdvertsComponent } from './my-adverts/my-adverts.component';
-import { NewAdvertComponent } from './new.advert/new.advert.component';
+import { NewAdvertComponent } from './new.advert/new.advert.component';;
+import { AdvertDetailsComponent } from './advert-details/advert-details.component'
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import { NewAdvertComponent } from './new.advert/new.advert.component';
         LoginComponent,
         RegisterComponent,
         MyAdvertsComponent,
-        NewAdvertComponent       
+        NewAdvertComponent ,
+        AdvertDetailsComponent      
     ],
         
     providers: [

@@ -37,6 +37,8 @@ namespace Properties_WebAPI
                 .EnableSensitiveDataLogging()
             );
 
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
             services.AddScoped<IPropertiesRepository, PropertiesRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAdvertService, AdvertService>();
