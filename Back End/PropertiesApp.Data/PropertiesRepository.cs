@@ -15,6 +15,7 @@ namespace PropertiesApp.Data
         User GetUserByEmail(User user);
         User CreateUser(User user);
         User UpdateUser(User user);
+        void UpdateUserDetails(int id, User user);
         void DeleteUser(int id);
 
         //----Adverts----
@@ -65,6 +66,20 @@ namespace PropertiesApp.Data
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateUserDetails(int id, User user)
+        {
+            var existing = _ctx.Users.SingleOrDefault(em => em.Id == id);
+            if (existing != null)
+            {
+                existing.FirstName = user.FirstName;
+                existing.LastName = user.LastName;
+                existing.Email = user.Email;
+                _ctx.Users.Update(existing);
+                _ctx.SaveChanges();
+            }
+        }
+
 
         //----------------------------- A D V E R T S -----------------------------------
         public Advert CreateAdvert(Advert ad)

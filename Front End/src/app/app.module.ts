@@ -12,8 +12,9 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register/register.component';
 import { MyAdvertsComponent } from './my-adverts/my-adverts.component';
 import { NewAdvertComponent } from './new.advert/new.advert.component';;
-import { AdvertDetailsComponent } from './advert-details/advert-details.component'
-
+import { AdvertDetailsComponent } from './advert-details/advert-details.component';
+import { AccountsPageComponent } from './accounts-page/accounts-page.component';
+import { SellersPageComponent } from './sellers-page/sellers-page.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -29,7 +30,9 @@ import { AdvertDetailsComponent } from './advert-details/advert-details.componen
         RegisterComponent,
         MyAdvertsComponent,
         NewAdvertComponent ,
-        AdvertDetailsComponent      
+        AdvertDetailsComponent ,
+        AccountsPageComponent ,
+        SellersPageComponent    
     ],
         
     providers: [

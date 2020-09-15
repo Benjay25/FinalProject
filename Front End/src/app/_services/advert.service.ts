@@ -32,8 +32,7 @@ export class AdvertService {
     }
     
     getLocation(): Observable<any> {
-      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-      return this.httpClient.get<any>(`${this.dataUrl}/locations`,{headers}); 
+      return this.httpClient.get<any>(`${this.dataUrl}/locations`); 
     } 
 
     getAdvert(id: number): Observable<Advert> {
@@ -46,19 +45,19 @@ export class AdvertService {
     }
 
     updateAdvert(advert: Advert): Observable<Advert> {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const url = `${this.dataUrl}/${advert.id}`;
-        return this.httpClient.put<Advert>(url, advert, { headers })
-      }
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const url = `${this.dataUrl}/${advert.id}`;
+      return this.httpClient.put<Advert>(url, advert, { headers })
+    }
 
-      createAdvert(advert: Advert): Observable<Advert> {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.httpClient.post<Advert>(this.dataUrl, advert, { headers })
-      }
+    createAdvert(advert: Advert): Observable<Advert> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.httpClient.post<Advert>(this.dataUrl, advert, { headers })
+    }
 
-      deleteProduct(id: number): Observable<{}> {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        const url = `${this.dataUrl}/${id}`;
-        return this.httpClient.delete<Advert>(url, { headers })
-      }
+    deleteProduct(id: number): Observable<{}> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const url = `${this.dataUrl}/${id}`;
+      return this.httpClient.delete<Advert>(url, { headers })
+    }
 }

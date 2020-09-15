@@ -22,6 +22,12 @@ export class UserService {
         return this.httpClient.get<Seller>(`${this.dataUrl}/${id}`);
     }
 
+    updateDetails(user: User): Observable<User> {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const url = `${this.dataUrl}/details/${user.id}`;
+        return this.httpClient.put<User>(url, user, { headers })
+    }
+
     getAll(): Observable<User[]> {
         return this.httpClient.get<User[]>(this.dataUrl);
     }

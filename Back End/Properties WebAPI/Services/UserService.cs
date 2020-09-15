@@ -19,6 +19,7 @@ namespace WebApi.Services
         UserModel GetById(int id);
         UserModel Find(User user);
         void Add(User user);
+        void UpdateUserDetails(int id, User user);
     }
 
     public class UserService : IUserService
@@ -67,7 +68,11 @@ namespace WebApi.Services
 
             return Map(userEntity);
         }
-
+        
+        public void UpdateUserDetails(int id, User user)
+        {
+            _repo.UpdateUserDetails(id, user);
+        }
         // helper methods
         public UserModel Find(User user)
         {

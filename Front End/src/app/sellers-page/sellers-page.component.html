@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="col-md-12" style="margin-inline: auto; margin-top: 5px;" >
+        <div class="card border-success text-success mb-3" style="margin-top: 0%; background-color: #201f24; text-align: center;">
+            <div class="row">
+                <img class="col-md-2 profile" src="../../assets/256-2569650_men-profile-icon-png-image-free-download-searchpng.png" alt="" >
+                <h1 class="profileTitle"> Benjamin's Seller Page</h1>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+        <div class="card border-success col-md-8" style="margin-top: 0%; background-color: #201f24; text-align: center; margin-inline: auto;">
+            <form (ngSubmit)='commitChanges()' [formGroup]="sellersForm" *ngIf="this.sellersForm">
+                <div class='container' style="margin-top: 2%; padding: 0%;">
+                    <h2 class="text-success mb-2" style="margin-bottom: 4px;">Your seller information</h2>
+                    <div class="form-group row mb-2 justify-content-center">
+                        <label class="col-sm-3 col-form-label" for="title">First Name</label>
+                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='firstname'></div>
+                    </div>
+                    <div class="form-group row mb-2 justify-content-center">
+                        <label class="col-sm-3 col-form-label" for="title">Last Name</label>
+                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='lastname'></div>
+                    </div>
+                    <div class="form-group row mb-2 justify-content-center">
+                        <label class="col-sm-3 col-form-label" for="title">Email</label>
+                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='email'></div>
+                    </div>
+                    <div class="form-group row mb-2 justify-content-center">
+                        <label class="col-sm-3 col-form-label" for="title">Phone Number</label>
+                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='phoneNum'></div>
+                    </div>
+                </div> 
+                <button class="btn btn-success mb-2 mt-2">Save Any Changes</button>
+            </form>
+        </div>
+</div> 

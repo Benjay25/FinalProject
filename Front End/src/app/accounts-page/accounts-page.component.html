@@ -1,0 +1,77 @@
+<div class="container" *ngIf="editState=='display' && user">
+    <div class="col-md-12" style="margin-inline: auto; margin-top: 5px;" >
+        <div class="card border-success text-success mb-3" style="margin-top: 0%; background-color: #201f24; text-align: center;">
+            <div class="row">
+                <img class="col-md-2 profile" src="../../assets/256-2569650_men-profile-icon-png-image-free-download-searchpng.png" alt="" >
+                <h1 class="profileTitle"> {{ user.firstName }}'s Profile Page</h1>
+                <div class="col-sm-1"></div>
+                <button class="btn btn-success" style="height: 25%;  margin-block: auto;" (click)="toggleState()">Edit Details</button>
+            </div>
+        </div>
+        <div class="row">
+            <div style="padding: 1.5%;"></div>
+            <div class="card border-success text-success mb-3 col-md-6" style="background-color: #201f24; text-align: center;">
+                <div class="card-header border-success">Personal Profile Details</div>
+                <div class="card-body" style="text-align: left;">
+                    <div>
+                        <label for="">Name: </label><span style="color: #dadada;"> {{ user.firstName }} {{ user.lastName }}</span>
+                    </div>
+                    <div>
+                        <label for="">Email: </label><span style="color: #dadada;"> {{ user.email }}</span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 1%;"></div>
+        </div>
+    </div>
+</div> 
+<div class="container" *ngIf="editState=='edit'" class="col-md-12" style="margin-inline: auto; margin-top: 5px;">
+        <div class="card border-success text-success mb-3" style="margin-top: 0%; background-color: #201f24; text-align: center;">
+            <div class="row">
+                <img class="col-md-2 profile" src="../../assets/256-2569650_men-profile-icon-png-image-free-download-searchpng.png" alt="" >
+                <h1 class="profileTitle"> {{ user.firstName }}'s Profile Page</h1>
+                <div class="col-sm-1"></div>
+                <button class="btn btn-success" style="height: 25%;  margin-block: auto;">Cancel Changes</button>
+            </div>
+        </div>
+        <div class="row">
+            <div style="padding: 1.5%;"></div>
+            <div class="card border-success text-success mb-3 col-md-6" style="background-color: #201f24; text-align: center;">
+                <form (ngSubmit)="commitChanges()" [formGroup]="accountForm" *ngIf="this.accountForm">
+                    <div class="card-header border-success">Personal Profile Details</div>
+                    <div class="card-body" style="text-align: left;">
+                        <div>
+                            <label class="col-md-3" for="">First Name: </label>
+                            <input class="col-md-6" type="text" formControlName="firstName" name="firstName">
+                        </div>
+                        <div>
+                            <label class="col-md-3" for="">Last Name: </label>
+                            <input class="col-md-6" type="text" formControlName="lastName" name="lastName">
+                        </div>
+                        <div>
+                            <label class="col-md-3" for="">Email: </label>
+                            <input class="col-md-6" type="text" formControlName="email" name="email">
+                        </div>
+                        <button class="btn btn-success" style="height: 25%; margin-inline: auto;" type="submit">Commit Changes</button>
+                    </div>
+                </form>
+            </div>
+            <div style="padding: 1%;"></div>
+            <div class="card border-success text-success mb-3 col-md-5" style="background-color: #201f24; text-align: center;">
+                <div class="card-header border-success">Password Details</div>
+                <div class="card-body">
+                    <div *ngIf="pwCorrect==false">
+                        <div><label class="col-md-8" for="">Current Password: </label></div>
+                        <input class="col-md-8" type="password">
+                        <div *ngIf="error" class="alert alert-danger mt-3 mb-0" style="padding: 5px;">{{error}}</div>
+                    </div>
+                    <div *ngIf="pwCorrect==true">
+                        <div><label class="col-md-8" for="">Enter New Password: </label></div>
+                        <input class="col-md-8" type="password">
+                        <div><label class="col-md-8" for="">Enter New Password: </label></div>
+                        <input class="col-md-8" type="password">
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>   

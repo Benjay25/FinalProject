@@ -63,7 +63,7 @@ namespace Properties.WebAPI.Controllers
             return Ok(users);
         }
 
-        // GET: api/Users/5
+        // GET: Users/5
         [HttpGet("{id}")]
         public IActionResult GetUser(int id)
         {
@@ -77,35 +77,13 @@ namespace Properties.WebAPI.Controllers
             return Ok(user);
         }
 
-        // PUT: api/Users/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutUser(int id, User user)
-        //{
-        //    if (id != user.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(user).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!UserExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
+        //PUT: api/Users/5
+        [HttpPut("details/{id}")]
+        public IActionResult PutUser(int id, User user)
+        {
+            _userService.UpdateUserDetails(id, user);
+            return Ok();
+        }
 
         //// DELETE: api/Users/5
         //[HttpDelete("{id}")]
