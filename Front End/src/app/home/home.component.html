@@ -3,21 +3,21 @@
         <div style="margin-block: 5px; margin-left: 5px;">
             <input class="col-md-6" type="text" placeholder="Search..." style="height: 100%;"> 
             <button type="button" class="btn btn-outline-success" style="margin-left: 4px; margin-right: 15px; margin-top: -2px;">Search</button>
-            <span style="color: #bababa; margin-right: 15px;" >Order Adverts By: </span>
-            <a style="margin-right: 15px;" (click)="lowToHigh()">Prices Low to High</a><a (click)="highToLow()">Prices High to Low</a>
+            <span style="color: #dadada; margin-right: 15px;" >Order Adverts By: </span>
+            <a class="effect" style="margin-right: 15px;" (click)="populateArray('toHigh')">Prices Low to High</a><a class="effect" (click)="populateArray('toLow')">Prices High to Low</a>
         </div>
     </div>
-    <div class="container col-md-8"> 
+    <div class="container col-md-8">
         <div class="card text-white border-success mb-3" style="background-color: #292d30;" *ngFor="let advert of arrAdverts">
             <div *ngIf="advert.status == 'LIVE'">
-                <div class="card-header border-success"> <span [routerLink]="['/homepage', advert.id, 'details']">{{ advert.title }}</span> </div>
+                <div class="card-header border-success"> <a class="effect text-success" [routerLink]="['/homepage', advert.id, 'details']">{{ advert.title }}</a> </div>
                 <div class="row" >
                     <div class="col-sm-5" style="margin-left: 2%;">
                         <div><span class="cityprov">City:</span> {{ advert.city }}</div>
                         <div><span class="cityprov">Province:</span> {{ advert.province }}</div>
                     </div>
-                    <div class="col-sm-3" style="text-align: center; "><h2>R{{ advert.price }}</h2></div>
-                    
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3" style="text-align: center; "><h2><span class="text-success">R</span>{{ advert.price }}</h2></div>
                 </div>
             </div>
         </div>

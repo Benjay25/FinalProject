@@ -5,6 +5,7 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Seller } from '@app/_models/seller';
 
 @Injectable({ providedIn: 'root' })
 
@@ -15,9 +16,13 @@ export class UserService {
     createUser(User: User): Observable<User> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.httpClient.post<User>(this.dataUrl, User, { headers });
-      }
+    }
 
-    getAll() {
+    getUser(id: Number) {
+        return this.httpClient.get<Seller>(`${this.dataUrl}/${id}`);
+    }
+
+    getAll(): Observable<User[]> {
         return this.httpClient.get<User[]>(this.dataUrl);
     }
 }

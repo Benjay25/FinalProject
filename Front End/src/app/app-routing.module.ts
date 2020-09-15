@@ -13,8 +13,8 @@ import { AdvertDetailsComponent } from './advert-details/advert-details.componen
 const routes: Routes = [
     { path: 'homepage', component: HomeComponent},
     { path: 'homepage/:id/details', component: AdvertDetailsComponent},
-    { path: 'login', canActivate: [AuthLoginGuard], component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'login', canActivate: [AuthLoginGuard], component: LoginComponent },
     { path: 'myAdverts', canActivate: [AuthGuard], component: MyAdvertsComponent },
     { path: 'myAdverts/:id/edit', canActivate: [AuthGuard], component: NewAdvertComponent },
     { path: 'myAdverts/new', canActivate: [AuthGuard], component: NewAdvertComponent },

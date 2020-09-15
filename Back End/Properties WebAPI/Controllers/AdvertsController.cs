@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PropertiesApp.Data;
 using Properties_WebAPI.Services;
+using Properties.ViewModels;
+using Microsoft.AspNetCore.Cors;
+using WebApi.Helpers;
 
 namespace Properties_WebAPI.Controllers
 {
@@ -15,7 +18,6 @@ namespace Properties_WebAPI.Controllers
     public class AdvertsController : ControllerBase
     {
         private IAdvertService _advertService;
-
 
         public AdvertsController(IAdvertService adServ)
         {
@@ -36,6 +38,14 @@ namespace Properties_WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
+            var ads = _advertService.GetAll();
+            return Ok(ads);
+        }
+
+        [HttpGet("orderby/{order}")]
+        public IActionResult GetAllOrdered(string order)
+        {
+            //var ads = _advertService.GetAdvertsOrdered(order);
             var ads = _advertService.GetAll();
             return Ok(ads);
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Properties.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,12 @@ namespace PropertiesApp.Data
 
         //----Adverts----
         Advert CreateAdvert(Advert ad);
-        List<Advert> GetAdverts();
+        List<Advert> GetAdverts(); 
+        List<Advert> GetAdvertsOrdered(string order);
         Advert GetAdvert(int id);
         void UpdateAdvert(Advert ad);
         void DeleteAdvert(int id);
-        List<Advert> GetCurrentUserAdverts(int id);
+        IEnumerable<Advert> GetCurrentUserAdverts(int id);
     }
     public class PropertiesRepository : IPropertiesRepository
     {
@@ -77,7 +79,17 @@ namespace PropertiesApp.Data
             return _ctx.Adverts.ToList();
         }
 
-        public List<Advert> GetCurrentUserAdverts(int id)
+        public List<Advert> GetAdvertsOrdered(string order)
+        {
+            if (order == "toLow")
+                return _ctx.Adverts.OrderByDescending(s => s.Price).ToList();
+            if (order == "toHigh")
+                return _ctx.Adverts.OrderBy(s => s.Price).ToList();
+            else
+                return _ctx.Adverts.ToList();
+        }
+
+        public IEnumerable<Advert> GetCurrentUserAdverts(int id)
         {
             return _ctx.Adverts.Where(a => a.UserId == id).ToList();
         }

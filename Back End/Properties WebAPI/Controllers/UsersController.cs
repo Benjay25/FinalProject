@@ -24,12 +24,10 @@ namespace Properties.WebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly AppSettings _appSettings;
         private IUserService _userService;
 
-        public UsersController(PropertiesContext context, IOptions<AppSettings> appSettings, IUserService userService)
+        public UsersController(IUserService userService)
         {
-            _appSettings = appSettings.Value;
             _userService = userService;
         }
         //---------------------------------------------------------------------------------

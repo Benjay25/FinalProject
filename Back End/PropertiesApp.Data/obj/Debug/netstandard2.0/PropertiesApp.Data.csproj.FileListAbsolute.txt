@@ -11,7 +11,7 @@ D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Data\bin\De
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.csprojAssemblyReference.cache
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.AssemblyInfoInputs.cache
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.AssemblyInfo.cs
-D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.csproj.CoreCompileInputs.cache
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.csproj.CopyComplete
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.dll
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.pdb
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\PropertiesApp.Data\obj\Debug\netstandard2.0\PropertiesApp.Data.csproj.CoreCompileInputs.cache

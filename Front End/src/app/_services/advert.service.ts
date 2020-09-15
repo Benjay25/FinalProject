@@ -13,8 +13,11 @@ export class AdvertService {
     dataUrl: string = `${environment.apiUrl}/adverts`;
     constructor(private httpClient: HttpClient) {} 
 
-    public getAdverts(): Observable<Advert[]> {
-        return this.httpClient.get<Advert[]>(this.dataUrl)
+    public getAdverts(order: string): Observable<Advert[]> {
+      if (order == "")
+        return this.httpClient.get<Advert[]>(this.dataUrl);
+      else 
+        return this.httpClient.get<Advert[]>(`${this.dataUrl}/orderby/${order}`);
     }
 
     removeHiddenAdvertsFromDisplay(arrAdverts: Advert[]): Advert[] {

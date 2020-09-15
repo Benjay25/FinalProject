@@ -156,3 +156,4 @@ D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Deb
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties.WebAPI.dll
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties.WebAPI.pdb
 D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties.WebAPI.genruntimeconfig.cache
+D:\Benjay\Work\Bitcube\Projects\Final Project\Back End\Properties WebAPI\obj\Debug\netcoreapp3.1\Properties.WebAPI.MvcApplicationPartsAssemblyInfo.cs

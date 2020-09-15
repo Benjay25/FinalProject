@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Properties.ViewModels;
 using PropertiesApp.Data;
 using System;
@@ -11,9 +12,10 @@ namespace Properties_WebAPI.Services
 {
     public interface IAdvertService
     {
-        IEnumerable<AdvertModel> GetAll();
-        AdvertModel GetById(int id);
         void Add(Advert ad);
+        IEnumerable<AdvertModel> GetAll();
+        IEnumerable<AdvertModel> GetAdvertsOrdered(string order);
+        AdvertModel GetById(int id);
         void UpdateAdvert(Advert ad);
         Dictionary<string, List<string>> GetLocations();
         IEnumerable<AdvertModel> GetAdvertsByUserId(int id);
@@ -41,6 +43,11 @@ namespace Properties_WebAPI.Services
             return adList.Select(u => Map(u));
         }
 
+        public IEnumerable<AdvertModel> GetAdvertsOrdered(string order)
+        {
+            var adList = _repo.GetAdvertsOrdered(order);
+            return adList.Select(u => Map(u));
+        }
         public IEnumerable<AdvertModel> GetAdvertsByUserId(int id)
         {
             var adList = _repo.GetCurrentUserAdverts(id);
@@ -66,6 +73,7 @@ namespace Properties_WebAPI.Services
             return new AdvertModel
             {
                 Id = ad.Id,
+                UserId = ad.UserId,
                 Title = ad.Title,
                 Province = ad.Province,
                 City = ad.City,
@@ -84,10 +92,10 @@ namespace Properties_WebAPI.Services
         {
             Dictionary<string, List<string>> ProvinceList = new Dictionary<string, List<string>>();
             ProvinceList.Add("Northern Cape", new List<string>() { "Kimberley", "Upington" });
-            ProvinceList.Add("Eastern Cape", new List<string>() { "Kimberley", "Upington" });
-            ProvinceList.Add("Western Cape", new List<string>() { "Kimberley", "Upington" });
-            ProvinceList.Add("Free State", new List<string>() { "Kimberley", "Upington" });
-            ProvinceList.Add("Gauteng", new List<string>() { "Kimberley", "Upington" });
+            ProvinceList.Add("Eastern Cape", new List<string>()  { "Port Elizabeth", "East London" });
+            ProvinceList.Add("Western Cape", new List<string>()  { "Kimberley", "Upington" });
+            ProvinceList.Add("Free State", new List<string>()    { "Bloemfontein", "Welkom" });
+            ProvinceList.Add("KwaZulu Natal", new List<string>() { "Durban", "Pietermaritzburg" });
             return ProvinceList;
         }
     }

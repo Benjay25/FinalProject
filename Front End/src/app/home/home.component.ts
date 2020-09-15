@@ -6,7 +6,7 @@ import { UserService, AuthenticationService } from '@app/_services';
 import { AdvertService } from '@app/_services/advert.service';
 import { Advert } from '@app/_models/advert';
 
-@Component({ templateUrl: 'home.component.html' })
+@Component({ templateUrl: 'home.component.html', styleUrls: ['./home.component.less'] })
 export class HomeComponent {
     loading = false;
     users: User[];
@@ -16,19 +16,11 @@ export class HomeComponent {
     constructor(private advertService: AdvertService) { }
 
     ngOnInit() {
-    this.populateArray();
+    this.populateArray("");
     }
 
-    highToLow(): void {
-        //ToBeImplemented
-    }
-
-    lowToHigh(): void {
-        //ToBeImplemented
-    }
-
-    populateArray(): void {
-        this.advertService.getAdverts().subscribe({
+    populateArray(order: string): void {
+        this.advertService.getAdverts(order).subscribe({
         next: advert => {
             this.arrAdverts = advert;
         },error: err => this.errorMessage = err
