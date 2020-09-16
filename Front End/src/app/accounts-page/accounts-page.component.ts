@@ -85,7 +85,7 @@ export class AccountsPageComponent implements OnInit {
     if (this.passwordsMatch()) {
       const pass: String = this.pwForm.get("newPw").value;      
       this.userService.updatePassword(pass).subscribe({
-        next: () => this.pwCorrect = false ,
+        next: () => {this.pwCorrect = false; this.error = "Please enter current password if you wish to change it to a new one"},
         error: err => this.errorMessage = err
       });
     } else {
