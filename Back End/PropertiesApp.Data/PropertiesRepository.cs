@@ -16,6 +16,8 @@ namespace PropertiesApp.Data
         User CreateUser(User user);
         User UpdateUser(User user);
         void UpdateUserDetails(int id, User user);
+        void UpdateSellerDetails(int id, User user);
+        void UpdateUserPassword(int id, string password);
         void DeleteUser(int id);
 
         //----Adverts----
@@ -80,6 +82,31 @@ namespace PropertiesApp.Data
             }
         }
 
+        public void UpdateSellerDetails(int id, User user)
+        {
+            var existing = _ctx.Users.SingleOrDefault(em => em.Id == id);
+            if (existing != null)
+            {
+                existing.FirstName = user.FirstName;
+                existing.LastName = user.LastName;
+                existing.Email = user.Email;
+                existing.PhoneNumber = user.PhoneNumber;
+                _ctx.Users.Update(existing);
+                _ctx.SaveChanges();
+            }
+        }
+
+        public void UpdateUserPassword(int id, string password)
+        {
+            var existing = _ctx.Users.SingleOrDefault(em => em.Id == id);
+            if (existing != null)
+            {
+                existing.Password = password;
+                _ctx.Users.Update(existing);
+                _ctx.SaveChanges();
+            }
+        }
+
 
         //----------------------------- A D V E R T S -----------------------------------
         public Advert CreateAdvert(Advert ad)
@@ -91,22 +118,23 @@ namespace PropertiesApp.Data
 
         public List<Advert> GetAdverts()
         {
-            return _ctx.Adverts.ToList();
+            return _ctx.Adverts.Where(a => a.Status == "LIVE").ToList();
         }
 
         public List<Advert> GetAdvertsOrdered(string order)
         {
+            var ads = _ctx.Adverts.Where(a => a.Status == "LIVE").ToList(); ;
             if (order == "toLow")
-                return _ctx.Adverts.OrderByDescending(s => s.Price).ToList();
-            if (order == "toHigh")
-                return _ctx.Adverts.OrderBy(s => s.Price).ToList();
-            else
-                return _ctx.Adverts.ToList();
+                ads = ads.OrderByDescending(s => s.Price).ToList();
+            else if (order == "toHigh")
+                ads = ads.OrderBy(s => s.Price).ToList();
+            return ads;
         }
 
         public IEnumerable<Advert> GetCurrentUserAdverts(int id)
         {
-            return _ctx.Adverts.Where(a => a.UserId == id).ToList();
+            var ads = _ctx.Adverts.Where(a => a.UserId == id).ToList();
+            return ads.Where(a => a.Status == "LIVE" || a.Status == "HIDDEN");
         }
 
         public Advert GetAdvert(int id)

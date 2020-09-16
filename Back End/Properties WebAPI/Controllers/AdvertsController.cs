@@ -45,13 +45,11 @@ namespace Properties_WebAPI.Controllers
         [HttpGet("orderby/{order}")]
         public IActionResult GetAllOrdered(string order)
         {
-            //var ads = _advertService.GetAdvertsOrdered(order);
-            var ads = _advertService.GetAll();
+            var ads = _advertService.GetAdvertsOrdered(order);
             return Ok(ads);
         }
 
         // GET: Adverts/5
-        //[Authorize]
         [HttpGet("{id}")]
         public IActionResult GetAdvert(int id)
         {
@@ -87,13 +85,13 @@ namespace Properties_WebAPI.Controllers
         // PUT: Adverts/5
         //[Authorize]
         [HttpPut("{id}")]
-        public IActionResult PutAdvert(Advert advert)
+        public IActionResult PutAdvert(int id, Advert advert) //TO BE IMPLEMENTED checking logged in user ID matches Updated ad ID
         {
             _advertService.UpdateAdvert(advert);
             return Ok();
         }
 
-        // DELETE: Adverts/5
+        // DELETE: Adverts/5 TO BE IMPLEMENTED SOON
         //[Authorize]
         [HttpDelete("{id}")]
         //public async Task<ActionResult<Advert>> DeleteAdvert(int id)

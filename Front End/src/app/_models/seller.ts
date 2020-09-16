@@ -3,4 +3,5 @@ export interface Seller{
     firstName: string;
     lastName: string;
     email: string;
+    phoneNumber?: string;
 }

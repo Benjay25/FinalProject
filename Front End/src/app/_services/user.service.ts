@@ -10,8 +10,9 @@ import { Seller } from '@app/_models/seller';
 @Injectable({ providedIn: 'root' })
 
 export class UserService {
-    constructor(private httpClient: HttpClient, private router: Router) { }
     dataUrl: string = `${environment.apiUrl}/users`;
+    id = JSON.parse(localStorage.getItem("currentUser")).id;
+    constructor(private httpClient: HttpClient, private router: Router) { }
 
     createUser(User: User): Observable<User> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -25,7 +26,20 @@ export class UserService {
     updateDetails(user: User): Observable<User> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const url = `${this.dataUrl}/details/${user.id}`;
-        return this.httpClient.put<User>(url, user, { headers })
+        return this.httpClient.put<User>(url, user, { headers });
+    }
+
+    updateSeller(user: User): Observable<User> {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const url = `${this.dataUrl}/seller/${user.id}`;
+        return this.httpClient.put<User>(url, user, { headers });
+    }
+
+    updatePassword(pass: String): Observable<User> {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const url = `${this.dataUrl}/password/${this.id}`;
+        var pw = { id: this.id, pw: pass };
+        return this.httpClient.put<User>(url, pw, { headers });
     }
 
     getAll(): Observable<User[]> {

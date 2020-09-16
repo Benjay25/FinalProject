@@ -2,10 +2,10 @@
     <div class="col-md-12" style="margin-inline: auto; margin-top: 5px;" >
         <div class="card border-success text-success mb-3" style="margin-top: 0%; background-color: #201f24; text-align: center;">
             <div class="row">
-                <img class="col-md-2 profile" src="../../assets/256-2569650_men-profile-icon-png-image-free-download-searchpng.png" alt="" >
+                <img class="col-md-2 profile" src="../../assets/pngfuel.com.png" alt="" >
                 <h1 class="profileTitle"> {{ user.firstName }}'s Profile Page</h1>
                 <div class="col-sm-1"></div>
-                <button class="btn btn-success" style="height: 25%;  margin-block: auto;" (click)="toggleState()">Edit Details</button>
+                <button class="btn btn-success" style="height: 25%; margin-block: auto;" (click)="toggleState()">Edit Details</button>
             </div>
         </div>
         <div class="row">
@@ -14,10 +14,10 @@
                 <div class="card-header border-success">Personal Profile Details</div>
                 <div class="card-body" style="text-align: left;">
                     <div>
-                        <label for="">Name: </label><span style="color: #dadada;"> {{ user.firstName }} {{ user.lastName }}</span>
+                        <label>Name: </label><span style="color: #dadada;"> {{ user.firstName }} {{ user.lastName }}</span>
                     </div>
                     <div>
-                        <label for="">Email: </label><span style="color: #dadada;"> {{ user.email }}</span>
+                        <label>Email: </label><span style="color: #dadada;"> {{ user.email }}</span>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <img class="col-md-2 profile" src="../../assets/256-2569650_men-profile-icon-png-image-free-download-searchpng.png" alt="" >
                 <h1 class="profileTitle"> {{ user.firstName }}'s Profile Page</h1>
                 <div class="col-sm-1"></div>
-                <button class="btn btn-success" style="height: 25%;  margin-block: auto;">Cancel Changes</button>
+                <button class="btn btn-success" style="height: 25%;  margin-block: auto;" (click)="cancel()">Cancel Changes</button>
             </div>
         </div>
         <div class="row">
@@ -41,15 +41,15 @@
                     <div class="card-header border-success">Personal Profile Details</div>
                     <div class="card-body" style="text-align: left;">
                         <div>
-                            <label class="col-md-3" for="">First Name: </label>
+                            <label class="col-md-3" for="firstName">First Name: </label>
                             <input class="col-md-6" type="text" formControlName="firstName" name="firstName">
                         </div>
                         <div>
-                            <label class="col-md-3" for="">Last Name: </label>
+                            <label class="col-md-3" for="lastName">Last Name: </label>
                             <input class="col-md-6" type="text" formControlName="lastName" name="lastName">
                         </div>
                         <div>
-                            <label class="col-md-3" for="">Email: </label>
+                            <label class="col-md-3" for="email">Email: </label>
                             <input class="col-md-6" type="text" formControlName="email" name="email">
                         </div>
                         <button class="btn btn-success" style="height: 25%; margin-inline: auto;" type="submit">Commit Changes</button>
@@ -58,20 +58,25 @@
             </div>
             <div style="padding: 1%;"></div>
             <div class="card border-success text-success mb-3 col-md-5" style="background-color: #201f24; text-align: center;">
-                <div class="card-header border-success">Password Details</div>
-                <div class="card-body">
-                    <div *ngIf="pwCorrect==false">
-                        <div><label class="col-md-8" for="">Current Password: </label></div>
-                        <input class="col-md-8" type="password">
-                        <div *ngIf="error" class="alert alert-danger mt-3 mb-0" style="padding: 5px;">{{error}}</div>
+                <form (ngSubmit)="updatePassword()" [formGroup]="pwForm" *ngIf="this.pwForm">
+                    <div class="card-header border-success">Password Details</div>
+                    <div class="card-body">
+                        <div *ngIf="pwCorrect==false">
+                            <div><label class="col-md-8" for="currPw">Current Password: </label></div>
+                            <input class="col-md-8" type="password" formControlName="currPw" name="currPw">
+                            <button class="btn btn-success" style="height: 25%; margin-inline: auto; margin-top: 4px;" type="button" (click)="checkPassword()"> Check Password </button>
+                            <div *ngIf="error" class="alert alert-success mt-3 mb-0" style="padding: 5px;">{{error}}</div>
+                        </div>
+                        <div *ngIf="pwCorrect==true">
+                            <div><label class="col-md-8" for="newPw">Enter New Password: </label></div>
+                            <input class="col-md-8" type="password" formControlName="newPw" name="newPw">
+                            <div><label class="col-md-8" for="confirmPw">Re-enter New Password: </label></div>
+                            <input class="col-md-8" type="password" formControlName="confirmPw" name="confirmPw">
+                            <button class="btn btn-success mt-2" style="height: 25%; margin-inline: auto; margin-top: 4px;" [disabled]="!pwForm.valid" type="submit"> Update to new Password </button>
+                            <div *ngIf="error" class="alert alert-info mt-3 mb-0" style="padding: 5px;">{{error}}</div>
+                        </div>
                     </div>
-                    <div *ngIf="pwCorrect==true">
-                        <div><label class="col-md-8" for="">Enter New Password: </label></div>
-                        <input class="col-md-8" type="password">
-                        <div><label class="col-md-8" for="">Enter New Password: </label></div>
-                        <input class="col-md-8" type="password">
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 </div>   

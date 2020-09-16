@@ -31,6 +31,10 @@ export class AuthenticationService {
             }));
     }
 
+    authenticatePassword(pw: String, id: number) {
+        return this.http.post<any>(`${this.dataUrl}/authenticate/pw`, {id, pw});
+    }
+
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

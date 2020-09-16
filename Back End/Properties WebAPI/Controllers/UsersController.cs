@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Properties.ViewModels;
 using PropertiesApp.Data;
+using PropertiesApp.Data.Entities;
 using WebApi.Helpers;
 using WebApi.Services;
 
@@ -40,6 +41,16 @@ namespace Properties.WebAPI.Controllers
                 return BadRequest(new { message = "Username or password is incorrect" });
             return Ok(user);
         }
+        //[Authorize]
+        [HttpPost("authenticate/pw")]
+        public IActionResult AuthenticatePw(Password pw)
+        {
+            var response = _userService.AuthenticatePw(pw);
+            if ( response == "success")
+                return Ok();
+            else
+                return BadRequest(new { message = "Password is incorrect" });
+        }
 
         //POST: Users
         [HttpPost]
@@ -56,6 +67,7 @@ namespace Properties.WebAPI.Controllers
         }
 
         // GET: Users
+        //[Authorize]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -64,6 +76,7 @@ namespace Properties.WebAPI.Controllers
         }
 
         // GET: Users/5
+        //[Authorize]
         [HttpGet("{id}")]
         public IActionResult GetUser(int id)
         {
@@ -77,15 +90,30 @@ namespace Properties.WebAPI.Controllers
             return Ok(user);
         }
 
-        //PUT: api/Users/5
+        //PUT: Users/details/5
+        //[Authorize]
         [HttpPut("details/{id}")]
-        public IActionResult PutUser(int id, User user)
+        public IActionResult PutUserDetails(int id, User user)
         {
             _userService.UpdateUserDetails(id, user);
             return Ok();
         }
-
-        //// DELETE: api/Users/5
+        //PUT: 
+        //[Authorize]
+        [HttpPut("seller/{id}")]
+        public IActionResult PutSellerDetails(int id, User user)
+        {
+            _userService.UpdateSellerDetails(id, user);
+            return Ok();
+        }
+        //[Authorize]
+        [HttpPut("password/{id}")]
+        public IActionResult PutUserPw(Password pw)
+        {
+            _userService.UpdateUserPassword(pw);
+            return Ok();
+        }
+        //// DELETE: api/Users/5 TO BE IMPLEMENTED SOON
         //[HttpDelete("{id}")]
         //public async Task<ActionResult<User>> DeleteUser(int id)
         //{

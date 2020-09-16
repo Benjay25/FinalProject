@@ -2,6 +2,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Properties.ViewModels;
 using PropertiesApp.Data;
+using PropertiesApp.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -15,11 +16,14 @@ namespace WebApi.Services
     public interface IUserService
     {
         AuthenticateResponse Authenticate(AuthenticateRequest model);
+        string AuthenticatePw(Password pw);
         IEnumerable<UserModel> GetAll();
         UserModel GetById(int id);
         UserModel Find(User user);
         void Add(User user);
         void UpdateUserDetails(int id, User user);
+        void UpdateSellerDetails(int id, User user);
+        void UpdateUserPassword(Password password);
     }
 
     public class UserService : IUserService
@@ -50,6 +54,15 @@ namespace WebApi.Services
 
             return new AuthenticateResponse(userModel, token);
         }
+        public string AuthenticatePw(Password pw)
+        {
+            var user = _repo.GetUsers().SingleOrDefault(x => x.Id == pw.Id);
+
+            // return null if user not found
+            if (user.Password == pw.PW) 
+                return "success";
+            else return "";
+        }
         //------------------------C R U D-------------------------
         public void Add(User user)
         {
@@ -73,6 +86,18 @@ namespace WebApi.Services
         {
             _repo.UpdateUserDetails(id, user);
         }
+
+        public void UpdateSellerDetails(int id, User user)
+        {
+            _repo.UpdateSellerDetails(id, user);
+        }
+
+        public void UpdateUserPassword(Password password)
+        {
+            int id = password.Id;
+            string pass = password.PW;
+            _repo.UpdateUserPassword(id, pass);
+        }
         // helper methods
         public UserModel Find(User user)
         {
@@ -86,7 +111,8 @@ namespace WebApi.Services
                 Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Email = user.Email
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
             };
         }
         private string generateJwtToken(UserModel user)

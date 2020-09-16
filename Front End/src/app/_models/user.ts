@@ -4,5 +4,6 @@
     lastname: string;
     email: string;
     password: string;
+    phoneNumber?: string;
     token?: string;
 }

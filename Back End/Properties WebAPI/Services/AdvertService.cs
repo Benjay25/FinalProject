@@ -88,7 +88,7 @@ namespace Properties_WebAPI.Services
             _repo.UpdateAdvert(ad);
         }
 
-        public Dictionary<string, List<string>> GetLocations() //TO BE REFACTORED
+        public Dictionary<string, List<string>> GetLocations() //TO BE REFACTORED SOON
         {
             Dictionary<string, List<string>> ProvinceList = new Dictionary<string, List<string>>();
             ProvinceList.Add("Northern Cape", new List<string>() { "Kimberley", "Upington" });

@@ -26,14 +26,14 @@ export class MyAdvertsComponent implements OnInit {
     if (ad.status == "LIVE") {
       ad.status = "HIDDEN";
       this.advertService.updateAdvert(ad).subscribe({
-        next: () => this.router.navigate(['/userAd']),
+        next: () => this.router.navigate(['/myAdverts']),
         error: err => this.errorMessage = err
       });
     }
     else if (ad.status == "HIDDEN") {
       ad.status = "LIVE";
       this.advertService.updateAdvert(ad).subscribe({
-        next: () => this.router.navigate(['/userAd']),
+        next: () => this.router.navigate(['/myAdverts']),
         error: err => this.errorMessage = err
       });
     }

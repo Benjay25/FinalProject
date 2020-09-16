@@ -2,8 +2,8 @@
     <div class="col-md-12" style="margin-inline: auto; margin-top: 5px;" >
         <div class="card border-success text-success mb-3" style="margin-top: 0%; background-color: #201f24; text-align: center;">
             <div class="row">
-                <img class="col-md-2 profile" src="../../assets/256-2569650_men-profile-icon-png-image-free-download-searchpng.png" alt="" >
-                <h1 class="profileTitle"> Benjamin's Seller Page</h1>
+                <img class="col-md-2 profile" src="../../assets/pngfuel.com.png" alt="" >
+                <h1 class="profileTitle" *ngIF="user.firstName"> {{ user.firstName }} Seller Page</h1>
                 <div class="col-sm-1"></div>
             </div>
         </div>
@@ -13,11 +13,11 @@
                     <h2 class="text-success mb-2" style="margin-bottom: 4px;">Your seller information</h2>
                     <div class="form-group row mb-2 justify-content-center">
                         <label class="col-sm-3 col-form-label" for="title">First Name</label>
-                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='firstname'></div>
+                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='firstName'></div>
                     </div>
                     <div class="form-group row mb-2 justify-content-center">
                         <label class="col-sm-3 col-form-label" for="title">Last Name</label>
-                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='lastname'></div>
+                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='lastName'></div>
                     </div>
                     <div class="form-group row mb-2 justify-content-center">
                         <label class="col-sm-3 col-form-label" for="title">Email</label>
@@ -25,10 +25,12 @@
                     </div>
                     <div class="form-group row mb-2 justify-content-center">
                         <label class="col-sm-3 col-form-label" for="title">Phone Number</label>
-                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='phoneNum'></div>
+                        <div class="col-md-5"><input class="form-control left" name="title" type="text" formControlName='phoneNumber'></div>
                     </div>
                 </div> 
-                <button class="btn btn-success mb-2 mt-2">Save Any Changes</button>
+                <button class="btn btn-danger mb-2 mt-2"  type="button" (click)="cancel()" *ngIf="sellersForm.dirty">Cancel Changes</button>
+                <button class="btn btn-success mb-2 mt-2" type="submit"  *ngIf="!sellersForm.dirty" disabled>Save Any Changes</button>
+                <button class="btn btn-success mb-2 mt-2" type="submit"  *ngIf="sellersForm.dirty" >Save Any Changes</button>
             </form>
         </div>
 </div> 
