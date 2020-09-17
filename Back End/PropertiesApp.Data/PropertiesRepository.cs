@@ -155,7 +155,13 @@ namespace PropertiesApp.Data
 
         public void DeleteAdvert(int id)
         {
-            throw new NotImplementedException();
+            var existing = _ctx.Adverts.SingleOrDefault(em => em.Id == id);
+            if (existing != null)
+            {
+                existing.Status = "DELETED";
+                _ctx.Adverts.Update(existing);
+                _ctx.SaveChanges();
+            }
         }
     }
 }

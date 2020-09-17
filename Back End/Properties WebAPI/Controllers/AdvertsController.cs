@@ -77,7 +77,7 @@ namespace Properties_WebAPI.Controllers
         }
         //[Authorize]
         [HttpGet("locations")]
-        public Dictionary<string, List<string>> GetLocations()
+        public LocationsModel GetLocations()
         {
             var locations = _advertService.GetLocations();
             return locations;
@@ -90,23 +90,14 @@ namespace Properties_WebAPI.Controllers
             _advertService.UpdateAdvert(advert);
             return Ok();
         }
-
-        // DELETE: Adverts/5 TO BE IMPLEMENTED SOON
+        // PUT: Adverts/5
         //[Authorize]
-        [HttpDelete("{id}")]
-        //public async Task<ActionResult<Advert>> DeleteAdvert(int id)
-        //{
-        //    var advert = await _context.Adverts.FindAsync(id);
-        //    if (advert == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Adverts.Remove(advert);
-        //    await _context.SaveChangesAsync();
-
-        //    return advert;
-        //}
+        [HttpPut("delete/{id}")]
+        public IActionResult PutShadowDeleteAdvert(int id)
+        {
+            _advertService.DeleteAdvert(id);
+            return Ok();
+        }
 
         private bool AdvertExists(int id)
         {

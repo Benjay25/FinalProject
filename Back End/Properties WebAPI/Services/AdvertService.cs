@@ -17,7 +17,8 @@ namespace Properties_WebAPI.Services
         IEnumerable<AdvertModel> GetAdvertsOrdered(string order);
         AdvertModel GetById(int id);
         void UpdateAdvert(Advert ad);
-        Dictionary<string, List<string>> GetLocations();
+        void DeleteAdvert(int id);
+        LocationsModel GetLocations();
         IEnumerable<AdvertModel> GetAdvertsByUserId(int id);
     }
     public class AdvertService : IAdvertService
@@ -87,16 +88,15 @@ namespace Properties_WebAPI.Services
         {
             _repo.UpdateAdvert(ad);
         }
-
-        public Dictionary<string, List<string>> GetLocations() //TO BE REFACTORED SOON
+        public void DeleteAdvert(int id)
         {
-            Dictionary<string, List<string>> ProvinceList = new Dictionary<string, List<string>>();
-            ProvinceList.Add("Northern Cape", new List<string>() { "Kimberley", "Upington" });
-            ProvinceList.Add("Eastern Cape", new List<string>()  { "Port Elizabeth", "East London" });
-            ProvinceList.Add("Western Cape", new List<string>()  { "Kimberley", "Upington" });
-            ProvinceList.Add("Free State", new List<string>()    { "Bloemfontein", "Welkom" });
-            ProvinceList.Add("KwaZulu Natal", new List<string>() { "Durban", "Pietermaritzburg" });
-            return ProvinceList;
+            _repo.DeleteAdvert(id);
+        }
+
+        public LocationsModel GetLocations() //TO BE REFACTORED SOON
+        {
+            var provinceList = new LocationsModel();
+            return provinceList;
         }
     }
 }

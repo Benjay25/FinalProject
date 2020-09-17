@@ -50,6 +50,12 @@ export class AdvertService {
       return this.httpClient.put<Advert>(url, advert, { headers })
     }
 
+    deleteAdvert(id: number): Observable<number> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const url = `${this.dataUrl}/delete/${id}`;
+      return this.httpClient.put<number>(url, { headers })
+    }
+
     createAdvert(advert: Advert): Observable<Advert> {
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
       return this.httpClient.post<Advert>(this.dataUrl, advert, { headers })

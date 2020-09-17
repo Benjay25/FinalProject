@@ -16,8 +16,7 @@
                         <div><span class="cityprov">City:</span> {{ advert.city }}</div>
                         <div><span class="cityprov">Province:</span> {{ advert.province }}</div>
                     </div>
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-3" style="text-align: center; "><h2><span class="text-success">R</span>{{ advert.price }}</h2></div>
+                    <div class="col-sm-5" style="text-align: left; "><h2><span class="text-success">R</span>{{ advert.price | currency:" ":"symbol":"1.2-2"}}</h2></div>
                 </div>
             </div>
         </div>

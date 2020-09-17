@@ -15,7 +15,8 @@
                     <div class="form-group row mb-2 justify-content-center">
                         <label class="col-sm-3 col-form-label" for="province">Province </label>
                         <div class="col-sm-7" style="margin-left: -11%;">
-                            <select class="form-control" formControlName = 'province' (change)="updateCities()">
+                            <select class="form-control" formControlName='province' (change)="updateCities()">
+                                <option disabled selected value> select a Province </option>
                                 <option *ngFor="let province of provincesArr" value="{{ province }}"> {{ province }}</option>
                             </select>
                         </div>
@@ -24,6 +25,7 @@
                         <label class="col-sm-3 col-form-label" for="title">City </label>
                         <div class="col-sm-7" style="margin-left: -11%;">
                             <select class="form-control" formControlName = 'city'>
+                                <option disabled selected value> select a City </option>
                                 <option value="{{ city }}" *ngFor='let city of citiesArr'> {{ city }} </option>
                             </select>
                         </div>

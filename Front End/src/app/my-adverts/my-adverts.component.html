@@ -5,11 +5,11 @@
             <div class="card text-white border-success mb-3" style="background-color: #292d30;" *ngFor="let advert of arrAdverts">
                 <div class="card-header border-success" >{{ advert.title }} <span class="text-secondary" *ngIf="advert.status == 'HIDDEN'">  (Hidden)</span></div>
                 <div class="row" >
-                    <div class="col-sm-6" style="margin-left: 2%;">
+                    <div class="col-sm-5" style="margin-left: 2%;">
                         <div><span class="cityprov">City:</span> {{ advert.city }}</div>
                         <div><span class="cityprov">Province:</span> {{ advert.province }}</div>
                     </div>
-                    <div class="col-sm-3" style="text-align: center; "><h2>R{{ advert.price }}</h2></div>
+                    <div class="col-sm-4" style="text-align: center; "><h2>{{ advert.price | currency:"R ":"symbol":"1.2-2" }}</h2></div>
                     <div class="col-sm-2">
                         <div class="dropdown" style="margin-top: 3%;">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -19,7 +19,7 @@
                             <a class="dropdown-item" [routerLink]="['/myAdverts', advert.id, 'edit']">Edit</a>
                             <a class="dropdown-item" *ngIf="advert.status == 'LIVE'" (click)="hideAdvert(advert)">Hide</a>
                             <a class="dropdown-item" *ngIf="advert.status == 'HIDDEN'" (click)="hideAdvert(advert)">Make Public</a>
-                            <a class="dropdown-item" (click)="deleteAdvert(advert)">Delete</a> 
+                            <a class="dropdown-item" (click)="deleteAdvert(advert.id)">Delete</a> 
                             </div>
                         </div>
                     </div>

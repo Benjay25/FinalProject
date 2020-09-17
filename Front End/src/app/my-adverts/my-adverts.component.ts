@@ -19,7 +19,12 @@ export class MyAdvertsComponent implements OnInit {
   }
 
   deleteAdvert(id: number): void {
-    //to be implemented
+    if (confirm("Are you sure you want to delete this advert?")) {
+        this.advertService.deleteAdvert(id).subscribe({
+          next: () => this.populateArray(),
+          error: err => this.errorMessage = err
+        });
+    }
   }
   
   hideAdvert(ad: Advert): void {

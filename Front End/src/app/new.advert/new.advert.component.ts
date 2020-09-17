@@ -14,6 +14,7 @@ import { Advert } from '@app/_models/advert';
 })
 export class NewAdvertComponent implements OnInit {
   title: string = "Create New Advert";
+  provCity: string[] = ["",""];
   newAdForm: FormGroup;
   sub: Subscription;
   advert: Advert;
@@ -38,9 +39,10 @@ export class NewAdvertComponent implements OnInit {
     this.locations = this.advertService.getLocation().subscribe(
       value => {
         this.locations = value;
-        for (const key in this.locations) {
+        for (const key in this.locations.provinceList) {
           this.provincesArr.push(key);
         }
+        this.updateCities();
       }
     )
 
@@ -73,8 +75,11 @@ export class NewAdvertComponent implements OnInit {
       title: this.advert.title,
       details: this.advert.details,
       price: this.advert.price,
-      city: this.advert.city,
       province: this.advert.province
+    });
+    this.updateCities();
+    this.newAdForm.patchValue({
+      city: this.advert.city
     });
   }
 
@@ -89,7 +94,7 @@ export class NewAdvertComponent implements OnInit {
 
   updateAd(ad: Advert) {
     this.advertService.updateAdvert(ad).subscribe({
-              next: () => this.router.navigate(['/userAd']),
+              next: () => this.router.navigate(['/myAdverts']),
               error: err => this.errorMessage = err
             });
   }
@@ -106,14 +111,13 @@ export class NewAdvertComponent implements OnInit {
     }
     this.sub = this.advertService.createAdvert(this.newAd).subscribe({ //create new advert using service
       next: () => {
-      this.router.navigate(["/userAd"]);
+      this.router.navigate(["/myAdverts"]);
     }
     });
   }
 
   updateCities(): void {
-    this.citiesArr = this.locations[this.newAdForm.get('provvince').value];
-    console.log(this.citiesArr);
+    this.citiesArr = this.locations.provinceList[this.newAdForm.get('province').value];
   }
 
   back(): void {
