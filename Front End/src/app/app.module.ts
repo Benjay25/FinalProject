@@ -14,7 +14,8 @@ import { MyAdvertsComponent } from './my-adverts/my-adverts.component';
 import { NewAdvertComponent } from './new.advert/new.advert.component';;
 import { AdvertDetailsComponent } from './advert-details/advert-details.component';
 import { AccountsPageComponent } from './accounts-page/accounts-page.component';
-import { SellersPageComponent } from './sellers-page/sellers-page.component';
+import { SellersPageComponent } from './sellers-page/sellers-page.component';;
+import { SearchComponent } from './search/search.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -32,7 +33,8 @@ import { SellersPageComponent } from './sellers-page/sellers-page.component';
         NewAdvertComponent ,
         AdvertDetailsComponent ,
         AccountsPageComponent ,
-        SellersPageComponent    
+        SellersPageComponent ,
+        SearchComponent   
     ],
         
     providers: [

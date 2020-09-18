@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Properties.ViewModels;
+using PropertiesApp.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,8 @@ namespace PropertiesApp.Data
 
         //----Adverts----
         Advert CreateAdvert(Advert ad);
-        List<Advert> GetAdverts(); 
-        List<Advert> GetAdvertsOrdered(string order);
+        List<Advert> GetAdverts();
+        List<Advert> GetFilteredAdverts(Filter filters);
         Advert GetAdvert(int id);
         void UpdateAdvert(Advert ad);
         void DeleteAdvert(int id);
@@ -121,14 +122,23 @@ namespace PropertiesApp.Data
             return _ctx.Adverts.Where(a => a.Status == "LIVE").ToList();
         }
 
-        public List<Advert> GetAdvertsOrdered(string order)
+        public List<Advert> GetFilteredAdverts(Filter filters)
         {
-            var ads = _ctx.Adverts.Where(a => a.Status == "LIVE").ToList(); ;
-            if (order == "toLow")
-                ads = ads.OrderByDescending(s => s.Price).ToList();
-            else if (order == "toHigh")
-                ads = ads.OrderBy(s => s.Price).ToList();
-            return ads;
+            IQueryable<Advert> ads;
+            if (filters.Province != "") //My attempt to reduce the number of initial ads obtained by first query (not getting every ad, only some if possible)
+            {
+                ads = _ctx.Adverts.Where(a => a.Province == filters.Province && a.Status == "LIVE");
+            } else
+            {
+                ads = _ctx.Adverts.Where(a => a.Status == "LIVE");
+            }
+            if (filters.Keywords != "") ads = ads.Where(a => a.Title.Contains(filters.Keywords) || a.Details.Contains(filters.Keywords));
+            if (filters.City != "") ads = ads.Where(a => a.City == filters.City);
+            if (filters.MaxPrice != 0) ads = ads.Where(a => a.Price <= filters.MaxPrice);
+            if (filters.MinPrice != 0) ads = ads.Where(a => a.Price >= filters.MinPrice);
+            if (filters.Order == "lth") ads = ads.OrderBy(s => s.Price);
+            else if (filters.Order == "htl") ads = ads.OrderByDescending(s => s.Price);
+            return ads.ToList();
         }
 
         public IEnumerable<Advert> GetCurrentUserAdverts(int id)

@@ -5,6 +5,7 @@ import { User } from '@app/_models';
 import { UserService, AuthenticationService } from '@app/_services';
 import { AdvertService } from '@app/_services/advert.service';
 import { Advert } from '@app/_models/advert';
+import { Filters } from '@app/_models/filters';
 
 @Component({ templateUrl: 'home.component.html', styleUrls: ['./home.component.less'] })
 export class HomeComponent {
@@ -12,19 +13,49 @@ export class HomeComponent {
     users: User[];
     arrAdverts: Advert[] = [];
     errorMessage: String;
+    filters: Filters;
+    filtersEmpty: boolean = true;
 
-    constructor(private advertService: AdvertService) { }
+    constructor(private advertService: AdvertService) {}
 
-    ngOnInit() {
-    this.populateArray("");
+    emptyFilters(): void {
+        this.filters = {
+            "province": "",
+            "city"    : "",
+            "maxPrice": 0,
+            "minPrice": 0,
+            "keywords": "",
+            "order"   : ""
+        };
+        this.filtersEmpty = true;
     }
 
-    populateArray(order: string): void {
-        this.advertService.getAdverts(order).subscribe({
-        next: advert => {
-            this.arrAdverts = advert;
-        },error: err => this.errorMessage = err
-        });
+    ngOnInit() {
+        this.emptyFilters();
+        this.populateArray();
+    }
+
+    receiveFilters($event) {
+        this.filters = $event;
+        this.filtersEmpty = false;
+        this.populateArray()
+    }
+
+    populateArray(): void {
+        if (this.filtersEmpty) { //if there are no filters applied
+            this.advertService.getAdverts().subscribe({
+                next: advert => {
+                this.arrAdverts = advert;
+                },error: err => this.errorMessage = err
+            });
+        }
+        else {
+            this.advertService.getFilteredAdverts(this.filters).subscribe({
+                next: advert => {
+                this.arrAdverts = advert;
+                },error: err => this.errorMessage = err
+            });
+        }
     }
 }
 

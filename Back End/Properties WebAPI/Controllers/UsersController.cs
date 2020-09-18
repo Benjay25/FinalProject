@@ -41,7 +41,7 @@ namespace Properties.WebAPI.Controllers
                 return BadRequest(new { message = "Username or password is incorrect" });
             return Ok(user);
         }
-        //[Authorize]
+        //[Authorize] AUTHORIZE DOES NOT WORK, WILL LOOK AT IT A BIT LATER
         [HttpPost("authenticate/pw")]
         public IActionResult AuthenticatePw(Password pw)
         {

@@ -10,6 +10,7 @@ using Properties_WebAPI.Services;
 using Properties.ViewModels;
 using Microsoft.AspNetCore.Cors;
 using WebApi.Helpers;
+using PropertiesApp.Data.Entities;
 
 namespace Properties_WebAPI.Controllers
 {
@@ -26,7 +27,7 @@ namespace Properties_WebAPI.Controllers
 
         //---------------------------------------------------------------------------------
         // POST: Adverts
-        //[Authorize]
+        //[Authorize] AUTHORIZE DOES NOT WORK, WILL LOOK AT IT A BIT LATER
         [HttpPost]
         public IActionResult PostAdvert(Advert advert)
         {
@@ -34,18 +35,18 @@ namespace Properties_WebAPI.Controllers
             return CreatedAtAction("GetAdvert", new { id = advert.Id }, advert);
         }
 
+        [HttpPost("filters")]
+        public IActionResult GetAllOrdered(Filter filters)
+        {
+            var ads = _advertService.GetFilteredAdverts(filters);
+            return Ok(ads);
+        }
+
         // GET: Adverts
         [HttpGet]
         public IActionResult GetAll()
         {
             var ads = _advertService.GetAll();
-            return Ok(ads);
-        }
-
-        [HttpGet("orderby/{order}")]
-        public IActionResult GetAllOrdered(string order)
-        {
-            var ads = _advertService.GetAdvertsOrdered(order);
             return Ok(ads);
         }
 

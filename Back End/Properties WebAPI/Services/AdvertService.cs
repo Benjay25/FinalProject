@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using Properties.ViewModels;
 using PropertiesApp.Data;
+using PropertiesApp.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Properties_WebAPI.Services
     {
         void Add(Advert ad);
         IEnumerable<AdvertModel> GetAll();
-        IEnumerable<AdvertModel> GetAdvertsOrdered(string order);
+        IEnumerable<AdvertModel> GetFilteredAdverts(Filter filters);
         AdvertModel GetById(int id);
         void UpdateAdvert(Advert ad);
         void DeleteAdvert(int id);
@@ -44,9 +45,9 @@ namespace Properties_WebAPI.Services
             return adList.Select(u => Map(u));
         }
 
-        public IEnumerable<AdvertModel> GetAdvertsOrdered(string order)
+        public IEnumerable<AdvertModel> GetFilteredAdverts(Filter filters)
         {
-            var adList = _repo.GetAdvertsOrdered(order);
+            var adList = _repo.GetFilteredAdverts(filters);
             return adList.Select(u => Map(u));
         }
         public IEnumerable<AdvertModel> GetAdvertsByUserId(int id)
@@ -62,7 +63,16 @@ namespace Properties_WebAPI.Services
 
             return Map(advertEntity);
         }
-      
+
+        public void UpdateAdvert(Advert ad)
+        {
+            _repo.UpdateAdvert(ad);
+        }
+        public void DeleteAdvert(int id)
+        {
+            _repo.DeleteAdvert(id);
+        }
+
         // Helper methods
         public AdvertModel Find(int id)
         {
@@ -82,15 +92,6 @@ namespace Properties_WebAPI.Services
                 Price = ad.Price,
                 Status = ad.Status
             };
-        }
-
-        public void UpdateAdvert(Advert ad)
-        {
-            _repo.UpdateAdvert(ad);
-        }
-        public void DeleteAdvert(int id)
-        {
-            _repo.DeleteAdvert(id);
         }
 
         public LocationsModel GetLocations() //TO BE REFACTORED SOON

@@ -4,6 +4,7 @@ import { Observable, throwError } from "rxjs";
 import { map } from "rxjs/operators";
 import { Advert } from '@app/_models/advert';
 import { environment } from '@environments/environment';
+import { Filters } from '@app/_models/filters';
 
 @Injectable ({
     providedIn: 'root'
@@ -13,11 +14,15 @@ export class AdvertService {
     dataUrl: string = `${environment.apiUrl}/adverts`;
     constructor(private httpClient: HttpClient) {} 
 
-    public getAdverts(order: string): Observable<Advert[]> {
-      if (order == "")
+    public getAdverts(): Observable<Advert[]> {
         return this.httpClient.get<Advert[]>(this.dataUrl);
-      else 
-        return this.httpClient.get<Advert[]>(`${this.dataUrl}/orderby/${order}`);
+    }
+
+    getFilteredAdverts(filters: Filters): Observable<Advert[]> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+      const url = `${this.dataUrl}/filters`;
+      console.log(filters);
+      return this.httpClient.post<Advert[]>(url , filters, {headers});
     }
 
     removeHiddenAdvertsFromDisplay(arrAdverts: Advert[]): Advert[] {
