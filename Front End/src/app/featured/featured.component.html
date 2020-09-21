@@ -1,0 +1,22 @@
+<div class="col-md-12" style="margin: 0 auto; margin-top: 5px;">
+
+  <div class="slide-wrap" *ngIf="adverts">
+    <div class="slider">
+      <div class="slide" id="slide-1" *ngFor="let advert of adverts">
+          <div class="container" style="margin-top: 2.5%;">
+              <div class="card text-white border-success mb-3" style="margin-top: 0%; background-color: #2b2a2e; text-align: center;">
+                <div class="card-header border-success"> <a class="effect text-success" [routerLink]="['/homepage',adverts[0].id, 'details']"><h1 style="font-weight: 600;">{{ advert.title }}</h1></a> </div>
+                <div class="row" >
+                    <div class="col-sm-5" style="margin: 0 auto; margin-top: 5px;">
+                        <div class="col-sm-12" ><div style="font-size: 35px;"><span class="text-success" style="font-size: 40px; font-weight: 600;">R</span>{{ advert.price | currency:" ":"symbol":"1.2-2"}}</div></div>
+                        <div class="info"><span class="cityprov">City:</span> {{ advert.city }}</div>
+                        <div class="info"><span class="cityprov">Province:</span> {{ advert.province }}</div>
+                    </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>

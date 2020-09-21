@@ -1,5 +1,9 @@
-<div class="col-md-13" style="margin-inline: auto;" >
+<div class="col-md-13" style="margin-inline: 0 auto;" >
     <app-search (filtersEvent)="receiveFilters($event)" (clearFilters)='emptyFilters()'></app-search>
+    <h1 class="text-success " style="text-align: center;">Featured Adverts</h1>
+    <div class="row justify-content-center" style="margin: 0 auto">
+        <div class="col-md-10"><app-featured [adverts]="arrAdverts" *ngIf="arrAdverts"></app-featured></div>
+    </div>
     <div class="container col-md-8">
         <div class="card text-white border-success mb-3" style="background-color: #292d30;" *ngFor="let advert of arrAdverts">
             <div *ngIf="advert.status == 'LIVE'">

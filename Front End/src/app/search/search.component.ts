@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Filters } from '@app/_models/filters';
 import { AdvertService } from '@app/_services/advert.service';
@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
-      keywords: [''],
+      keywords: ['', [Validators.maxLength(20)]],
       province: [''],
       city: [''],
       maxPrice: [''],

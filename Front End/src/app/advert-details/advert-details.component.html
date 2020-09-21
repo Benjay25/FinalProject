@@ -1,14 +1,12 @@
-<div class="col-md-10" style="margin-inline: auto; margin-top: 5px;" >
+<div class="col-md-10" style="margin: 0 auto; margin-top: 5px;" >
     <div class="card border-success text-success mb-3" style="margin-top: 0%; background-color: #2b2a2e; text-align: center;" *ngIf="advert">
         <div class="container ">
             <div class="col-sm-13" style="margin-left: 2%;">
                 <img class="mr-2" src="../../assets/pexels-photo-106399.jpeg" style="height: 380px; width: 95%; margin-top: 5px; margin-left: 0px; margin-bottom: 10px;" alt="">
                 <div><h1><span style="color: #26972b;">{{ advert.title }}</span></h1></div>
                 <div><span class="cityprov">Location: <span class="text-secondary">{{ advert.city }}, {{ advert.province }}</span></span></div>
-                <div><h1>R<span class="text-secondary">{{ advert.price }}</span></h1></div>
-                <div><span class="cityprov">Seller: <span class="text-secondary" *ngIf="seller">{{ seller.firstName }} {{ seller.lastName }}</span></span></div>
-                <div><span class="cityprov">Email:</span><span class="text-secondary" *ngIf="seller"> {{ seller.email }}</span></div>
-                <div *ngIf="seller.phoneNumber"><span class="cityprov">Phone No.</span><span class="text-secondary" *ngIf="seller"> {{ seller.phoneNumber }}</span></div>
+                <div><h1>R<span class="text-secondary">{{ advert.price | currency:" ":"symbol":"1.2-2"}}</span></h1></div>
+                <app-contact-seller [sellerInfo]="seller"></app-contact-seller>
             </div>
             <div class="row">
                 <div class="col-sm-11" style="margin-left: 3%; margin-bottom: 5px; text-align: left"><div><span class="cityprov">Details: <span class="text-secondary">{{ advert.details }}</span></span></div></div>
