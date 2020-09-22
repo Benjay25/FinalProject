@@ -14,12 +14,16 @@ namespace Properties_WebAPI.Services
     public interface IAdvertService
     {
         void Add(Advert ad);
+        void AddFavourite(int id, int userId);
         IEnumerable<AdvertModel> GetAll();
         IEnumerable<AdvertModel> GetFilteredAdverts(Filter filters);
         AdvertModel GetById(int id);
+        bool CheckFavourite(int id, int userId);
         void UpdateAdvert(Advert ad);
+        void ToggleFeatured(int id);
         void DeleteAdvert(int id);
         LocationsModel GetLocations();
+        void DeleteFavourite(int id, int userId);
         IEnumerable<AdvertModel> GetAdvertsByUserId(int id);
     }
     public class AdvertService : IAdvertService
@@ -39,6 +43,10 @@ namespace Properties_WebAPI.Services
             _repo.CreateAdvert(ad);
         }
         
+        public void AddFavourite(int id, int userId)
+        {
+            _repo.AddFavourite(id, userId);
+        }
         public IEnumerable<AdvertModel> GetAll()
         {
             var adList = _repo.GetAdverts();
@@ -64,13 +72,26 @@ namespace Properties_WebAPI.Services
             return Map(advertEntity);
         }
 
+        public bool CheckFavourite(int id, int userId)
+        {
+            return _repo.CheckFavourite(id, userId);
+        }
         public void UpdateAdvert(Advert ad)
         {
             _repo.UpdateAdvert(ad);
         }
+
+        public void ToggleFeatured(int id)
+        {
+            _repo.ToggleFeatured(id);
+        }
         public void DeleteAdvert(int id)
         {
             _repo.DeleteAdvert(id);
+        }
+        public void DeleteFavourite(int id, int userId)
+        {
+            _repo.DeleteFavourite(id, userId);
         }
 
         // Helper methods
@@ -90,7 +111,8 @@ namespace Properties_WebAPI.Services
                 City = ad.City,
                 Details = ad.Details,
                 Price = ad.Price,
-                Status = ad.Status
+                Status = ad.Status,
+                Featured = ad.Featured
             };
         }
 
@@ -99,5 +121,6 @@ namespace Properties_WebAPI.Services
             var provinceList = new LocationsModel();
             return provinceList;
         }
+
     }
 }

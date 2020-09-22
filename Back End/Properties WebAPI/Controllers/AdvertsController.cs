@@ -35,6 +35,22 @@ namespace Properties_WebAPI.Controllers
             return CreatedAtAction("GetAdvert", new { id = advert.Id }, advert);
         }
 
+        // POST: Adverts/favourite/5
+        //[Authorize] AUTHORIZE DOES NOT WORK, WILL LOOK AT IT A BIT LATER
+        [HttpPost("favourite/{id}/{userId}")]
+        public IActionResult AddFavourite(int id, int userId)
+        {
+            _advertService.AddFavourite(id, userId);
+            return Ok();
+        }
+
+        [HttpGet("favourite/{id}/{userId}")]
+        public IActionResult CheckFavourite(int id, int userId)
+        {
+            bool check = _advertService.CheckFavourite(id, userId);
+            return Ok(check);
+        }
+
         [HttpPost("filters")]
         public IActionResult GetAllOrdered(Filter filters)
         {
@@ -91,12 +107,27 @@ namespace Properties_WebAPI.Controllers
             _advertService.UpdateAdvert(advert);
             return Ok();
         }
+        // PUT: Adverts/togglefav/5
+        //[Authorize]
+        [HttpPut("togglefeatured/{id}")]
+        public IActionResult PutAdvert(int id) //TO BE IMPLEMENTED checking logged in user ID matches Updated ad ID
+        {
+            _advertService.ToggleFeatured(id);
+            return Ok();
+        }
         // PUT: Adverts/5
         //[Authorize]
         [HttpPut("delete/{id}")]
         public IActionResult PutShadowDeleteAdvert(int id)
         {
             _advertService.DeleteAdvert(id);
+            return Ok();
+        }
+
+        [HttpDelete("unfavourite/{id}/{userId}")]
+        public IActionResult DeleteFavourite(int id, int userId)
+        {
+            _advertService.DeleteFavourite(id, userId);
             return Ok();
         }
 

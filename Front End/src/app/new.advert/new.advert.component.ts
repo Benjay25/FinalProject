@@ -107,7 +107,8 @@ export class NewAdvertComponent implements OnInit {
         "city": this.newAdForm.get('city').value,
         "details": this.newAdForm.get('details').value.trim(),
         "price": this.newAdForm.get('price').value,
-        "status": "LIVE"
+        "status": "LIVE",
+        "featured": false
     }
     this.sub = this.advertService.createAdvert(this.newAd).subscribe({ //create new advert using service
       next: () => {

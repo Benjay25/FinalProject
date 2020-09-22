@@ -55,6 +55,27 @@ export class AdvertService {
       return this.httpClient.put<Advert>(url, advert, { headers })
     }
 
+    toggleFeatured(id: number): Observable<Advert> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const url = `${this.dataUrl}/togglefeatured/${id}`;
+      return this.httpClient.put<Advert>(url, { headers })
+    }
+
+    unfavourite(userId: number, advertId: number) {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const url = `${this.dataUrl}/unfavourite/${advertId}/${userId}`;
+      return this.httpClient.delete<Advert>(url, { headers })
+    }
+    favourite(userId: number, advertId: number) {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      const url = `${this.dataUrl}/favourite/${advertId}/${userId}`;
+      return this.httpClient.post<Advert>(url, { headers })
+    }
+
+    checkfavourite(userId: number, advertId: number): Observable<boolean> {
+      return this.httpClient.get<boolean>(`${this.dataUrl}/favourite/${advertId}/${userId}`)
+    }
+
     deleteAdvert(id: number): Observable<number> {
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
       const url = `${this.dataUrl}/delete/${id}`;

@@ -23,11 +23,15 @@ namespace PropertiesApp.Data
 
         //----Adverts----
         Advert CreateAdvert(Advert ad);
+        void AddFavourite(int id, int userId);
         List<Advert> GetAdverts();
         List<Advert> GetFilteredAdverts(Filter filters);
         Advert GetAdvert(int id);
+        bool CheckFavourite(int id, int userId);
         void UpdateAdvert(Advert ad);
+        void ToggleFeatured(int id);
         void DeleteAdvert(int id);
+        void DeleteFavourite(int id, int userId);
         IEnumerable<Advert> GetCurrentUserAdverts(int id);
     }
     public class PropertiesRepository : IPropertiesRepository
@@ -117,6 +121,18 @@ namespace PropertiesApp.Data
             return ad;
         }
 
+        public void AddFavourite(int id, int userId)
+        {
+            var check = _ctx.FavouriteAdverts.Where(a => a.AdvertId == id && a.UserId == userId).ToList();
+            if (check.Count() == 0)
+            {
+                var item = new Favourites(id, userId);
+                _ctx.FavouriteAdverts.Add(item);
+                _ctx.SaveChanges();
+            }
+            
+        }
+
         public List<Advert> GetAdverts()
         {
             return _ctx.Adverts.Where(a => a.Status == "LIVE").ToList();
@@ -152,6 +168,15 @@ namespace PropertiesApp.Data
             return _ctx.Adverts.Find(id);
         }
 
+        public bool CheckFavourite(int id, int userId)
+        {
+            bool check = false;
+            var entity = _ctx.FavouriteAdverts.Where(a => a.AdvertId == id && a.UserId == userId).ToList();
+            if (entity.Count != 0)
+                check = true;
+            return check;
+        }
+
         public void UpdateAdvert(Advert ad)
         {
             var existing = _ctx.Adverts.SingleOrDefault(em => em.Id == ad.Id);
@@ -159,6 +184,20 @@ namespace PropertiesApp.Data
                 _ctx.Entry(existing).State = EntityState.Detached;
                 _ctx.Adverts.Attach(ad);
                 _ctx.Entry(ad).State = EntityState.Modified;
+                _ctx.SaveChanges();
+            }
+        }
+
+        public void ToggleFeatured(int id)
+        {
+            var existing = _ctx.Adverts.SingleOrDefault(em => em.Id == id);
+            if (existing != null)
+            {
+                if (existing.Featured)
+                    existing.Featured = false;
+                else
+                    existing.Featured = true;
+                _ctx.Adverts.Update(existing);
                 _ctx.SaveChanges();
             }
         }
@@ -172,6 +211,17 @@ namespace PropertiesApp.Data
                 _ctx.Adverts.Update(existing);
                 _ctx.SaveChanges();
             }
+        }
+
+        void IPropertiesRepository.DeleteFavourite(int id, int userId)
+        {
+            var entity = _ctx.FavouriteAdverts.SingleOrDefault(a => a.AdvertId == id && a.UserId == userId);
+            if (entity != null)
+            {
+                _ctx.FavouriteAdverts.Remove(entity);
+                _ctx.SaveChanges();
+            }
+            
         }
     }
 }

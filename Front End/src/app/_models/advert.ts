@@ -6,5 +6,6 @@ export interface Advert{
     city: string,
     details: string,
     price: number,
-    status: string
+    status: string,
+    featured: boolean
 }

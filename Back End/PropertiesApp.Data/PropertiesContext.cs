@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PropertiesApp.Data.Entities;
 using System;
 
 namespace PropertiesApp.Data
@@ -14,6 +15,6 @@ namespace PropertiesApp.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Advert> Adverts { get; set; }
-
+        public DbSet<Favourites> FavouriteAdverts { get; set; }
     }
 }

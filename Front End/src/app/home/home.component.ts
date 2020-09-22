@@ -12,6 +12,7 @@ export class HomeComponent {
     loading = false;
     users: User[];
     arrAdverts: Advert[] = [];
+    featuredAdverts: Advert[];
     errorMessage: String;
     filters: Filters;
     filtersEmpty: boolean = true;
@@ -41,18 +42,40 @@ export class HomeComponent {
         this.populateArray()
     }
 
+    sortFeaturedFirst(arr: Advert[]): Advert[] {
+        var arrFeatured: Advert[] = [];
+        var arrOther: Advert[] = [];
+        arr.forEach(element => {
+            if (element.featured == true) 
+                arrFeatured.push(element);
+            else
+                arrOther.push(element);
+        });
+        var tempArray: Advert[] = arrFeatured.concat(arrOther);
+        return tempArray;
+    }
+
+    populateFeatured(): void {
+        var tempArray: Advert[] = [];
+        this.arrAdverts.forEach(element => {
+            if (element.featured == true)  tempArray.push(element);
+        });
+        this.featuredAdverts = tempArray;
+    }
+
     populateArray(): void {
         if (this.filtersEmpty) { //if there are no filters applied
             this.advertService.getAdverts().subscribe({
                 next: advert => {
-                this.arrAdverts = advert;
+                this.arrAdverts = this.sortFeaturedFirst(advert);
+                if (!this.featuredAdverts) this.populateFeatured();
                 },error: err => this.errorMessage = err
             });
         }
         else {
             this.advertService.getFilteredAdverts(this.filters).subscribe({
                 next: advert => {
-                this.arrAdverts = advert;
+                    this.arrAdverts = this.sortFeaturedFirst(advert);
                 },error: err => this.errorMessage = err
             });
         }

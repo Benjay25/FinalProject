@@ -51,4 +51,11 @@ export class MyAdvertsComponent implements OnInit {
       },error: err => this.errorMessage = err
     });
   }
+
+  featured(id: number) :void {
+    this.advertService.toggleFeatured(id).subscribe({
+      next: () => this.populateArray(),
+      error: err => this.errorMessage = err
+    });
+  }
 }

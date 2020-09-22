@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PropertiesApp.Data;
 
 namespace PropertiesApp.Data.Migrations
 {
     [DbContext(typeof(PropertiesContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20200922093118_FeaturedAndFavourites")]
+    partial class FeaturedAndFavourites
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +33,6 @@ namespace PropertiesApp.Data.Migrations
                     b.Property<string>("Details")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Featured")
-                        .HasColumnType("bit");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -51,7 +50,7 @@ namespace PropertiesApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Adverts");
+                    b.ToTable("Advert");
                 });
 
             modelBuilder.Entity("PropertiesApp.Data.Entities.Favourites", b =>

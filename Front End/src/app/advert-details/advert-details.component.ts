@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 export class AdvertDetailsComponent implements OnInit {
   advert: Advert;
   seller: Seller;
+  adId: number;
   errorMessage: String;
   sub: Subscription;
   
@@ -28,12 +29,14 @@ export class AdvertDetailsComponent implements OnInit {
           this.getAdvert(id);
         }
       });
+      console.log("hit")
   }
 
   getAdvert(id: number): void { //retrieve advert
     this.advertService.getAdvert(id).subscribe({
         next: (advert: Advert) => {
           this.advert = advert;
+          this.adId = advert.id;
           this.getContactInfo();
         },
         error: err => this.errorMessage = err
