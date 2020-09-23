@@ -14,5 +14,8 @@ namespace PropertiesApp.Data.Entities
             UserId = userId;
             AdvertId = id;
         }
+        public Favourites()
+        {
+        }
     }
 }

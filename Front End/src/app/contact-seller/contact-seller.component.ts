@@ -17,8 +17,7 @@ export class ContactSellerComponent implements OnInit {
   contactForm: FormGroup;
   message: string;
   errorMessage: any;
-  @Output() refresh = new EventEmitter<string>();
-  constructor(private fb: FormBuilder, private advertService: AdvertService, private router: Router, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private advertService: AdvertService) {
   }
 
   ngOnInit(): void {
@@ -60,7 +59,7 @@ export class ContactSellerComponent implements OnInit {
   unfavourite(id: number): void {
     this.advertService.unfavourite(id, this.advertId).subscribe({
       next: () => {
-        this.refresh.emit("");
+        this.checkFavourite();
       },
       error: err => this.errorMessage = err
     });
@@ -68,8 +67,8 @@ export class ContactSellerComponent implements OnInit {
 
   favourite(id: number): void {
     this.advertService.favourite(id, this.advertId).subscribe({
-      next: () => {
-        this.refresh.emit("");
+      next: () => {    
+        this.checkFavourite();
       },
       error: err => this.errorMessage = err
     });

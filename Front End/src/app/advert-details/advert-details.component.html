@@ -6,7 +6,7 @@
                 <div><h1><span style="color: #26972b;">{{ advert.title }}</span></h1></div>
                 <div><span class="cityprov">Location: <span class="text-secondary">{{ advert.city }}, {{ advert.province }}</span></span></div>
                 <div><h1>R<span class="text-secondary">{{ advert.price | currency:" ":"symbol":"1.2-2"}}</span></h1></div>
-                <app-contact-seller [sellerInfo]="seller" [advertId]="adId" (refresh)="ngOnInit()" *ngIf="seller && adId"></app-contact-seller>
+                <app-contact-seller [sellerInfo]="seller" [advertId]="adId" *ngIf="seller && adId"></app-contact-seller>
             </div>
             <div class="row">
                 <div class="col-sm-11" style="margin-left: 3%; margin-bottom: 5px; text-align: left"><div><span class="cityprov">Details: <span class="text-secondary">{{ advert.details }}</span></span></div></div>

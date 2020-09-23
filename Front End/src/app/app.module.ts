@@ -18,7 +18,9 @@ import { SellersPageComponent } from './sellers-page/sellers-page.component';
 import { SearchComponent } from './search/search.component';
 import { ContactSellerComponent } from './contact-seller/contact-seller.component';
 import { FeaturedComponent } from './featured/featured.component';
-
+import { FavouritesComponent } from './favourites/favourites.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
+import { AdminAdvertComponent } from './admin-advert/admin-advert.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -39,8 +41,10 @@ import { FeaturedComponent } from './featured/featured.component';
         SellersPageComponent ,
         SearchComponent ,
         ContactSellerComponent ,
-        FeaturedComponent 
-    ],
+        FeaturedComponent ,
+        FavouritesComponent,
+        AdminUserComponent,
+        AdminAdvertComponent   ],
         
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

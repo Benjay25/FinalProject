@@ -1,0 +1,27 @@
+<div class="col-md-13" style="margin-inline: 0 auto;" >
+    <h1 class="text-success " style="text-align: center;">Favourite Adverts</h1>
+    <div class="container col-md-8">
+        <div *ngIf="errorMessage" style="color: gray; text-align: center;"><h2>{{ errorMessage }}</h2></div>
+        <div class="card text-white border-success mb-3" style="background-color: #292d30;" *ngFor="let advert of arrAdverts">
+            <div *ngIf="advert.status == 'LIVE'">
+                <div class="card-header border-success"> <a class="effect text-success" [routerLink]="['/homepage', advert.id, 'details']">
+                    {{ advert.title }}</a> </div>
+                <div class="row" >
+                    <div class="col-sm-5" style="margin-left: 2%;">
+                        <div><span class="cityprov">City:</span> {{ advert.city }}</div>
+                        <div><span class="cityprov">Province:</span> {{ advert.province }}</div>
+                    </div>
+                    <div class="col-sm-5" style="text-align: left; "><h2><span class="text-success">R</span>{{ advert.price | currency:" ":"symbol":"1.2-2"}}</h2></div>
+                    <div class="col-sm-1">
+                        <a (click)="unfavourite(advert.id)">
+                            <svg style="color: green; margin-top: 8px" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

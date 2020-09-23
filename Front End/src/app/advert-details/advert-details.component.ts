@@ -29,7 +29,6 @@ export class AdvertDetailsComponent implements OnInit {
           this.getAdvert(id);
         }
       });
-      console.log("hit")
   }
 
   getAdvert(id: number): void { //retrieve advert

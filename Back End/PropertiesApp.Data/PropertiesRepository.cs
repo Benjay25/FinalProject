@@ -25,6 +25,7 @@ namespace PropertiesApp.Data
         Advert CreateAdvert(Advert ad);
         void AddFavourite(int id, int userId);
         List<Advert> GetAdverts();
+        List<Advert> GetFavourites(int id);
         List<Advert> GetFilteredAdverts(Filter filters);
         Advert GetAdvert(int id);
         bool CheckFavourite(int id, int userId);
@@ -136,6 +137,23 @@ namespace PropertiesApp.Data
         public List<Advert> GetAdverts()
         {
             return _ctx.Adverts.Where(a => a.Status == "LIVE").ToList();
+        }
+
+        public List<Advert> GetFavourites(int id)
+        {
+            List<Favourites> adIdList = _ctx.FavouriteAdverts.Where(a => a.UserId == id).ToList();
+            if (adIdList.Count() == 0) //If list is empty, return null
+            {
+                List<Advert> empty = null;
+                return empty; 
+            }
+
+            List<Advert> adList = _ctx.Adverts.Where(a => a.Status == "LIVE" && a.Id == adIdList.ElementAt(0).AdvertId).ToList();
+            for (int i=1; i < adIdList.Count(); i++)
+            {
+                adList.AddRange(_ctx.Adverts.Where(a => a.Status == "LIVE" && a.Id == adIdList.ElementAt(i).AdvertId).ToList());
+            }
+            return adList;
         }
 
         public List<Advert> GetFilteredAdverts(Filter filters)

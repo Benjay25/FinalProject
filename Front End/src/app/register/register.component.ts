@@ -32,7 +32,9 @@ export class RegisterComponent implements OnInit {
       "firstname": this.regForm.get('firstnames').value.trim(),
       "lastname": this.regForm.get('surname').value.trim(),
       "email": this.regForm.get('email').value.trim(),
-      "password": this.regForm.get('password').value.trim()
+      "password": this.regForm.get('password').value.trim(),
+      "locked": false,
+      "admin": false
     }
     if (!this.passwordConfirmed()) {
       this.userService.createUser(this.regUser).subscribe({ //create new user using service

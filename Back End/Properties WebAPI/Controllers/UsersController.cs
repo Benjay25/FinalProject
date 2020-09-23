@@ -113,25 +113,5 @@ namespace Properties.WebAPI.Controllers
             _userService.UpdateUserPassword(pw);
             return Ok();
         }
-        //// DELETE: api/Users/5 TO BE IMPLEMENTED SOON
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<User>> DeleteUser(int id)
-        //{
-        //    var user = await _context.Users.FindAsync(id);
-        //    if (user == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Users.Remove(user);
-        //    await _context.SaveChangesAsync();
-
-        //    return user;
-        //}
-
-        //private bool UserExists(int id)
-        //{
-        //    return _context.Users.Any(e => e.Id == id);
-        //}
     }
 }

@@ -23,7 +23,16 @@
       <li><a class="nav-item nav-link text-white" routerLink="/myAdverts">My Adverts</a></li>
       <li><a class="nav-item nav-link text-white" routerLink="/sellers">My Sellers Profile</a></li>
       <li><a class="nav-item nav-link text-white" routerLink="/account">Manage Account</a></li>
-      <li><a class="nav-item nav-link text-white" routerLink="/">Favourites</a></li>
+      <li><a class="nav-item nav-link text-white" routerLink="/favourites">Favourites</a></li>
+      <li><div class="btn-group">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background: #34343d;">
+          <a class="nav-item nav-link text-white dropdown-item" routerLink="/admin/user">Manage Users</a>
+          <a class="nav-item nav-link text-white dropdown-item" routerLink="/admin/advert">Manage Adverts</a>
+        </div>
+    </div></li>
     </ul>
   </nav>
 

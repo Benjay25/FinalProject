@@ -18,6 +18,10 @@ export class AdvertService {
         return this.httpClient.get<Advert[]>(this.dataUrl);
     }
 
+    public getFavourites(id: number): Observable<Advert[]> {
+      return this.httpClient.get<Advert[]>(`${this.dataUrl}/favourites/${id}`);
+    }
+
     getFilteredAdverts(filters: Filters): Observable<Advert[]> {
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
       const url = `${this.dataUrl}/filters`;

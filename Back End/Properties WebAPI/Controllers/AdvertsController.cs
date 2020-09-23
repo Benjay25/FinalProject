@@ -79,6 +79,19 @@ namespace Properties_WebAPI.Controllers
 
             return Ok(advert);
         }
+
+        [HttpGet("favourites/{id}")]
+        public IActionResult GetFavourites(int id)
+        {
+            var advert = _advertService.GetFavourites(id);
+
+            if (advert == null)
+            {
+                return BadRequest("You have no favourited adverts!");
+            }
+
+            return Ok(advert);
+        }
         //[Authorize]
         [HttpGet("myadverts/{id}")]
         public IActionResult GetCurrentUserAdvert(int id)

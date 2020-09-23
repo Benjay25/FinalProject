@@ -5,5 +5,7 @@
     email: string;
     password: string;
     phoneNumber?: string;
+    admin: boolean;
+    locked: boolean;
     token?: string;
 }

@@ -8,6 +8,8 @@ namespace Properties.ViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public bool Admin { get; set; }
+        public bool Locked { get; set; }
         public string Token { get; set; }
 
 
@@ -17,6 +19,8 @@ namespace Properties.ViewModels
             FirstName = user.FirstName;
             LastName = user.LastName;
             Email = user.Email;
+            Admin = user.Admin;
+            Locked = user.Locked;
             Token = token;
         }
     }

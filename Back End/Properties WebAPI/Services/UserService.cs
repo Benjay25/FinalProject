@@ -112,6 +112,8 @@ namespace WebApi.Services
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
+                Admin = user.Admin,
+                Locked = user.Locked,
                 PhoneNumber = user.PhoneNumber
             };
         }
