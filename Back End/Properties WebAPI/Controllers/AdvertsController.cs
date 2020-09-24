@@ -65,6 +65,13 @@ namespace Properties_WebAPI.Controllers
             var ads = _advertService.GetAll();
             return Ok(ads);
         }
+        // GET: Adverts/all
+        [HttpGet("all")]
+        public IActionResult GetAllAdverts()
+        {
+            var ads = _advertService.GetAllAds();
+            return Ok(ads);
+        }
 
         // GET: Adverts/5
         [HttpGet("{id}")]

@@ -16,6 +16,7 @@ namespace Properties_WebAPI.Services
         void Add(Advert ad);
         void AddFavourite(int id, int userId);
         IEnumerable<AdvertModel> GetAll();
+        IEnumerable<AdvertModel> GetAllAds();
         IEnumerable<AdvertModel> GetFavourites(int id);
         IEnumerable<AdvertModel> GetFilteredAdverts(Filter filters);
         AdvertModel GetById(int id);
@@ -50,8 +51,13 @@ namespace Properties_WebAPI.Services
         }
         public IEnumerable<AdvertModel> GetAll()
         {
-            var adList = _repo.GetAdverts();
-            return adList.Select(u => Map(u));
+            var adlist = _repo.GetAdverts();
+            return adlist.Select(u => Map(u));
+        }
+        public IEnumerable<AdvertModel> GetAllAds()
+        {
+            var adlist = _repo.GetAllAdverts();
+            return adlist.Select(u => Map(u));
         }
 
         public IEnumerable<AdvertModel> GetFavourites(int id)

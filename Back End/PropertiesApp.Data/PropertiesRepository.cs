@@ -17,6 +17,8 @@ namespace PropertiesApp.Data
         User CreateUser(User user);
         User UpdateUser(User user);
         void UpdateUserDetails(int id, User user);
+        void Unlock(int id);
+        void Lock(int id);
         void UpdateSellerDetails(int id, User user);
         void UpdateUserPassword(int id, string password);
         void DeleteUser(int id);
@@ -25,6 +27,7 @@ namespace PropertiesApp.Data
         Advert CreateAdvert(Advert ad);
         void AddFavourite(int id, int userId);
         List<Advert> GetAdverts();
+        List<Advert> GetAllAdverts();
         List<Advert> GetFavourites(int id);
         List<Advert> GetFilteredAdverts(Filter filters);
         Advert GetAdvert(int id);
@@ -88,6 +91,26 @@ namespace PropertiesApp.Data
             }
         }
 
+        public void Unlock(int id)
+        {
+            var existing = _ctx.Users.SingleOrDefault(em => em.Id == id);
+            if (existing != null)
+            {
+                existing.Locked = false;
+                _ctx.Users.Update(existing);
+                _ctx.SaveChanges();
+            }
+        }
+        public void Lock(int id)
+        {
+            var existing = _ctx.Users.SingleOrDefault(em => em.Id == id);
+            if (existing != null)
+            {
+                existing.Locked = true;
+                _ctx.Users.Update(existing);
+                _ctx.SaveChanges();
+            }
+        }
         public void UpdateSellerDetails(int id, User user)
         {
             var existing = _ctx.Users.SingleOrDefault(em => em.Id == id);
@@ -137,6 +160,11 @@ namespace PropertiesApp.Data
         public List<Advert> GetAdverts()
         {
             return _ctx.Adverts.Where(a => a.Status == "LIVE").ToList();
+        }
+
+        public List<Advert> GetAllAdverts()
+        {
+            return _ctx.Adverts.ToList();
         }
 
         public List<Advert> GetFavourites(int id)

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '@app/_models';
 import { UserService } from '@app/_services';
 
@@ -13,12 +13,33 @@ export class AdminUserComponent implements OnInit {
   errorMessage: string;
   emailForm: FormGroup;
   constructor(private userService: UserService, private fb: FormBuilder) { }
+  c: number = 0;
 
+  get emails(): FormArray{
+    return <FormArray>this.emailForm.get('emails');
+  }
+  
   ngOnInit(): void {
     this.emailForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email ,Validators.minLength(6), Validators.maxLength(100)]],
+      emails: this.fb.array([])
     });
     this.populateArray();
+  }
+
+  countAds(): void {
+    this.c = 0;
+    this.arrUsers.forEach(()=> {
+      this.c++;
+    })
+  }
+
+  emailsInit(): void {
+    this.countAds();
+    for (var i=0; i<this.c; i++) {
+      this.emails.push(this.fb.group({
+        email: ['', [ Validators.email]]
+      }))
+    }
   }
 
   populateArray(): void {
@@ -26,15 +47,43 @@ export class AdminUserComponent implements OnInit {
     this.userService.getAll().subscribe({
       next: users => {
       this.arrUsers = users;
+      this.emailsInit();
       },error: err => this.errorMessage = err
   });
   }
 
-  submit(): void {
-    //logic
+  submit(user: User, i: number): void {
+    var arrEmails = this.emailForm.get('emails') as FormArray;
+    var email = arrEmails.at(i).get("email").value;
+    if (email != "") {
+      if (user.email = JSON.parse(localStorage.getItem("currentUser")).email) {
+        JSON.stringify(localStorage.setItem("email", email))
+      }
+      user.email = email;
+      this.userService.updateDetails(user).subscribe({
+        next: () => {
+          this.populateArray();
+        },
+        error: err => this.errorMessage = err
+      });
+    }
   }
 
   unlock(id: number): void {
-    //logic
+    this.userService.unlock(id).subscribe({
+      next: () => {
+        this.populateArray();
+      },
+      error: err => this.errorMessage = err
+    });
+  }
+
+  lock(id: number): void {
+    this.userService.lock(id).subscribe({
+      next: () => {
+        this.populateArray();
+      },
+      error: err => this.errorMessage = err
+    });
   }
 }

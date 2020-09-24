@@ -106,6 +106,22 @@ namespace Properties.WebAPI.Controllers
             _userService.UpdateSellerDetails(id, user);
             return Ok();
         }
+        //PUT: 
+        //[Authorize]
+        [HttpPut("unlock/{id}")]
+        public IActionResult Unlock(int id)
+        {
+            _userService.Unlock(id);
+            return Ok();
+        }
+        //PUT: 
+        //[Authorize]
+        [HttpPut("lock/{id}")]
+        public IActionResult Lock(int id)
+        {
+            _userService.Lock(id);
+            return Ok();
+        }
         //[Authorize]
         [HttpPut("password/{id}")]
         public IActionResult PutUserPw(Password pw)

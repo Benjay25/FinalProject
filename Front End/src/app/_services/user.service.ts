@@ -29,6 +29,18 @@ export class UserService {
         return this.httpClient.put<User>(url, user, { headers });
     }
 
+    unlock(id: number): Observable<User> {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const url = `${this.dataUrl}/unlock/${id}`;
+        return this.httpClient.put<User>(url, { headers });
+    }
+
+    lock(id: number): Observable<User> {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const url = `${this.dataUrl}/lock/${id}`;
+        return this.httpClient.put<User>(url, { headers });
+    }
+
     updateSeller(user: User): Observable<User> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const url = `${this.dataUrl}/seller/${user.id}`;

@@ -17,6 +17,9 @@ export class AdvertService {
     public getAdverts(): Observable<Advert[]> {
         return this.httpClient.get<Advert[]>(this.dataUrl);
     }
+    public getAllAdverts(): Observable<Advert[]> {
+      return this.httpClient.get<Advert[]>(`${this.dataUrl}/all`);
+    }
 
     public getFavourites(id: number): Observable<Advert[]> {
       return this.httpClient.get<Advert[]>(`${this.dataUrl}/favourites/${id}`);

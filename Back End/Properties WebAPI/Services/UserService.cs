@@ -22,6 +22,8 @@ namespace WebApi.Services
         UserModel Find(User user);
         void Add(User user);
         void UpdateUserDetails(int id, User user);
+        void Unlock(int id);
+        void Lock(int id);
         void UpdateSellerDetails(int id, User user);
         void UpdateUserPassword(Password password);
     }
@@ -85,6 +87,16 @@ namespace WebApi.Services
         public void UpdateUserDetails(int id, User user)
         {
             _repo.UpdateUserDetails(id, user);
+        }
+
+        public void Unlock(int id)
+        {
+            _repo.Unlock(id);
+        }
+
+        public void Lock(int id)
+        {
+            _repo.Lock(id);
         }
 
         public void UpdateSellerDetails(int id, User user)
